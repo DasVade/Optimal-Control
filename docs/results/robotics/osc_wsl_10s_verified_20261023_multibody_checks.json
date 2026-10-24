@@ -1,0 +1,15 @@
+{
+  "contact_jacobian_max_error": 1.5853429680134923e-11,
+  "contact_bias_max_error": 2.2493842953205667e-06,
+  "actuator_limits_Nm": [
+    500.0,
+    500.0,
+    400.0,
+    400.0
+  ],
+  "dimensions": {
+    "positions": 7,
+    "velocities": 7,
+    "actuators": 4
+  }
+}

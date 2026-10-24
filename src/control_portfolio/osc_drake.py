@@ -66,6 +66,12 @@ def run(folder,duration=.2):
             ok=record['success'] and solution is not None and record['constraint_violation']<1e-4
             if ok:self.previous=solution[7:11]
             record.update(time_s=t,fsm=int(fsm),fallback=not ok,solve_seconds=time.perf_counter()-start)
+            point=self.contacts[fsm];world=self.plant.world_frame()
+            position=self.plant.CalcPointsPositions(self.pc,point.frame,point.pt,world).ravel()
+            record.update(applied_torque_Nm=self.previous.tolist(),stance_position_m=position.tolist(),
+                          stance_velocity_m_s=(j@state[7:]).tolist())
+            if solution is not None:
+                record['candidate_contact_force_N']=solution[-3:].tolist()
             self.logs.append(record);output.SetFromVector(self.previous)
 
     class Planner(planner_module.LipTrajPlanner):
@@ -144,5 +150,13 @@ def run(folder,duration=.2):
         minimum_base_height_m=float(states[:,1].min()),final_base_height_m=float(states[-1,1]),
         final_base_pitch_rad=float(states[-1,2]),forward_distance_m=float(states[-1,0]-states[0,0]),
         demonstrated_walking=False,note='Execution alone does not establish stable walking; inspect duration, posture, contacts and solver failures.')
+    if controller.logs:
+        torques=np.array([record['applied_torque_Nm'] for record in controller.logs])
+        velocities=np.array([record['stance_velocity_m_s'] for record in controller.logs])
+        metrics.update(peak_applied_torque_Nm=np.max(np.abs(torques),axis=0).tolist(),
+            max_applied_actuator_violation_Nm=float(max(0.,np.max(np.abs(torques)-controller.limits))),
+            stance_velocity_rms_m_s=float(np.sqrt(np.mean(np.sum(velocities**2,axis=1)))),
+            max_abs_base_pitch_rad=float(np.max(np.abs(states[:,2]))),
+            planner_stance_transitions=int(sum(a['fsm']!=b['fsm'] for a,b in zip(controller.logs[:-1],controller.logs[1:]))))
     save(folder/'simulation_metrics.json',metrics);print(metrics,flush=True)
     return [dict(validation=validation,metrics=metrics)]

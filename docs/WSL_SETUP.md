@@ -51,3 +51,46 @@ wsl -d Ubuntu-22.04 --exec /home/yxlewis/.venvs/optimal-control/bin/python scrip
 ```
 
 The optional Drake model test also independently compares the portable Acrobot dynamics against the supplied URDF at five fixed-seed states and torques. It does not rerun or reclassify the earlier infeasible optimization trials. On Windows without Drake this test is explicitly skipped.
+
+## Expanded Drake verification
+
+The persistent environment has been reused, with no new WSL distribution or replacement environment. The tests now independently check both feet, center-of-mass position and the scalar torso joint over three fixed-seed configurations and velocities. They verify the model's `qdot=v` mapping, velocity-coordinate Jacobians and bias accelerations with finite differences, in addition to the Acrobot model comparison. These pass in Drake 1.51.1. This extends the initial single stance-foot check without changing controller gains or planner equations.
+
+The preserved completed HW4 code has also now been executed directly with Drake. For the same notebook waypoints and four 1 s segments, its solver reports `kSolutionFound`; integrated squared snap is 210.6953646030 versus 210.6953642384 for the scaled solver. Maximum sampled position difference is 1.42e-8 m; original waypoint residual is 1.42e-8 m. The original implementation is therefore verified for this configuration, rather than only classified as completed from inspection. One-sided continuity checks at +/-1e-9 s give 3.37e-8 maximum difference across derivative orders 1-4 (their respective units). This is a sampled numerical check, not a blanket conditioning guarantee.
+
+```powershell
+wsl -d Ubuntu-22.04 --exec /home/yxlewis/.venvs/optimal-control/bin/python scripts/verify_drake_minsnap.py --output 'outputs/my_drake_minsnap_verification'
+```
+
+The saved comparison is `docs/results/robotics/drake_minsnap_verification.json`. Original course files and all earlier numerical runs remain unchanged. The missing original HW2 trajectory module remains missing; a working Drake installation does not resolve missing source material.
+
+## Ten-second contact-switching verification
+
+The unchanged controller/planner settings were run for 10 s in the same persistent environment. Additional logging records applied torques, stance-point position/velocity and candidate QP contact forces; the earlier five-second experiment is preserved.
+
+| Diagnostic | Measured result |
+|---|---:|
+| Completed simulation / wall time | 10 s / 128.51 s |
+| Forward displacement | 5.1527 m |
+| Forward velocity RMSE relative to .5 m/s | .1013 m/s |
+| Planned stance transitions | 49 |
+| Minimum / final base height | .7805 / .8011 m |
+| Maximum absolute / final base pitch | .5381 / .4948 rad |
+| QP fallback events | 1, at .9995 s |
+| Median / p95 QP execution time | 5.055 / 7.808 ms |
+| Maximum accepted constraint residual | 2.71e-5 |
+| Maximum applied actuator-bound overshoot | 1.28e-5 Nm |
+| Stance-point velocity RMS | .4544 m/s |
+
+The numerical bound overshoot is explicitly retained rather than rounded to zero; QP solutions are accepted within a 1e-4 residual tolerance, and this adapter does not apply a post-solve clipping guard. Peak torques reach the 500/400 Nm URDF limits. Limit events are brief: per-actuator fractions within 1e-4 Nm of a limit are .00160, .00170, .00100 and .00095, respectively. This is not sustained saturation. The residual combines constraint rows with their own units; it is a numerical diagnostic, not a physical accuracy measure.
+
+Accepted QP contact forces satisfy the candidate linear friction cone to the reported numerical tolerance. They are **predicted optimization variables**, not independently measured plant contact forces. Stance-point velocity includes contact transitions; its nonzero value is not a certified physical slip estimate. Torso lean, unverified contact-force agreement and the absence of disturbance/mismatch evaluations prevent a robust-walking claim. Offline computation is slower than simulated time and provides no real-time guarantee.
+
+[Ten-second state plots](figures/robotics/osc_wsl_10s_states.png) · [Model-kinematics animation](figures/robotics/osc_wsl_10s.gif) · [Numerical diagnostics](results/robotics/osc_wsl_10s_diagnostics.json)
+
+```powershell
+wsl -d Ubuntu-22.04 --exec /home/yxlewis/.venvs/optimal-control/bin/python scripts/run_wsl_osc.py --duration 10 --output 'outputs/my_wsl_osc_10s'
+.\.venv\Scripts\python.exe scripts/summarize_wsl_osc.py 'outputs/my_wsl_osc_10s' --output 'outputs/my_wsl_osc_10s_diagnostics.json'
+```
+
+The summary script uses NumPy only and can instead run with the WSL interpreter. Figure regeneration for the recorded run uses `scripts/build_wsl_osc.py --input outputs/osc_wsl_10s_verified_20261023 --prefix osc_wsl_10s` under WSL. This follow-up verifies executable multibody simulation and several mathematical properties; it does not reclassify the earlier unsuccessful Acrobot optimizations or establish robust locomotion.
