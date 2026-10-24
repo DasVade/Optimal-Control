@@ -43,8 +43,8 @@ def attempt(folder):
     record=dict(module='OSC',source_materials_present=not missing,missing=missing,
                 demonstrated_walking=False,portable_qp_only=True)
     if importlib.util.find_spec('pydrake') is None:
-        record.update(status='blocked',reason='pydrake is not installed in the active Windows environment. Existing WSL Ubuntu Python 3.10.12 also reports ModuleNotFoundError: pydrake and has no pip. Temporary WSL environment creation was declined; no further environment modifications attempted.')
+        record.update(status='blocked_in_active_interpreter',reason='pydrake is unavailable in this interpreter. A persistent WSL environment is now available at /home/yxlewis/.venvs/optimal-control; see docs/WSL_SETUP.md for the headless multibody runner.')
     else:
-        record.update(status='unverified',reason='Drake detected; full multibody wiring, Jacobian checks and walking simulation remain required. Matrix QP alone is insufficient.')
+        record.update(status='drake_available',reason='Run scripts/run_wsl_osc.py for the multibody adapter, kinematic checks and headless simulation. This command checks availability only; see docs/WSL_SETUP.md.')
     save(folder/'status.json',record);print(record['status'],record['reason'],flush=True)
     return [record]

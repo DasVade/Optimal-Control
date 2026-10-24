@@ -1,0 +1,14 @@
+{
+  "duration_requested_s": 0.2,
+  "duration_completed_s": 0.2,
+  "error": null,
+  "wall_seconds": 2.6390063740036567,
+  "solver_evaluations": 400,
+  "solver_failures": 0,
+  "minimum_base_height_m": 0.7872830974307786,
+  "final_base_height_m": 0.7872830974307786,
+  "final_base_pitch_rad": -0.0004470866562615374,
+  "forward_distance_m": 0.004506513416500858,
+  "demonstrated_walking": false,
+  "note": "Execution alone does not establish stable walking; inspect duration, posture, contacts and solver failures."
+}

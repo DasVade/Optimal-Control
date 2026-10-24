@@ -1,5 +1,7 @@
 # Robotic Motion Planning and Optimal Control: experimental report
 
+**WSL follow-up:** The earlier Drake environment blocker has been resolved using a persistent project environment. The headless multibody adapter and new results are documented separately in [WSL_SETUP.md](WSL_SETUP.md); the original experiments and dated failures below remain unchanged.
+
 October 23, 2026. This extends the preserved [HW3 report](TECHNICAL_REPORT.md). [Assignment inventory and provenance](ASSIGNMENT_INVENTORY.md) distinguish original student regions, course frameworks, missing functions, and new completions. These are established methods, not novel algorithms. All experiments use local CPU simulation; none use hardware or paid compute.
 
 ## Scope and status

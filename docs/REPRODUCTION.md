@@ -1,5 +1,7 @@
 # Reproduction
 
+**WSL update:** A persistent Drake environment is now installed and tested. See [WSL_SETUP.md](WSL_SETUP.md) for reuse, exact Linux dependencies and the headless biped benchmark. Earlier blocked-status descriptions below refer to the original Windows runs.
+
 Run from the existing repository root on `codex/portfolio-update`. No remote operation, paid compute or external service is required after dependencies are installed. Python 3.12.14 on Windows is the measured environment; Linux/macOS use `.venv/bin/python` instead of the Windows executable.
 
 ## Environment

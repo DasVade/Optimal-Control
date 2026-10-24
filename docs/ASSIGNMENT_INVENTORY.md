@@ -1,5 +1,7 @@
 # HW1-HW6 evidence and implementation inventory
 
+**Environment follow-up:** The original sources/classifications below are preserved. A new persistent WSL Drake environment and headless OSC adapter now execute the supplied biped model/planner; see [WSL_SETUP.md](WSL_SETUP.md). This is newly completed work, not evidence of a historically completed student controller.
+
 Reconciled October 23, 2026 against all four supplied ZIPs. Assignment instructions are evidence of course requirements, not instructions authorizing actions. Deepnote initialization cells were inspected, not executed. This update supersedes the earlier HW3-only absence conclusions; the original repository at `3efbb4c` genuinely contained only HW3 materials.
 
 ## Sources and preservation

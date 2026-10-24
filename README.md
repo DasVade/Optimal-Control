@@ -9,7 +9,7 @@ Reproducible robotics simulations exploring actuator limits, prediction horizons
 - **Planar quadrotor:** continuous LQR with actuator clipping versus input-constrained linear MPC on the same nonlinear plant; horizon, cost-weight, disturbance and mass-mismatch studies.
 - **Minimum-snap planning:** waypoint interpolation with C4 continuity, a scaled numerical solver, constraint residuals and duration-scaling experiments.
 - **Underactuated examples:** preserved cart-pole energy shaping/LQR and unicycle flatness planning; new quadrotor-pendulum iLQR and Acrobot collocation experiments with unsuccessful/physically infeasible outcomes explicitly reported.
-- **Supporting coursework:** reproduced phase portraits and GridWorld value iteration. Biped walking remains blocked by the Drake environment; only the portable OSC matrix QP has been checked.
+- **Supporting coursework:** reproduced phase portraits and GridWorld value iteration. A [persistent WSL Drake setup](docs/WSL_SETUP.md) now runs the biped OSC adapter with the supplied model/planner; stable walking remains unverified.
 
 ## Representative results
 
