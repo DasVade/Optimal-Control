@@ -1,0 +1,3955 @@
+{
+  "config": {
+    "duration_s": 20.0,
+    "dt_s": 0.01,
+    "nominal_parameters": {
+      "mc": 1.0,
+      "mp": 1.0,
+      "length": 1.0,
+      "gravity": 9.81
+    },
+    "q_diagonal": [
+      1.0,
+      1.0,
+      1.0,
+      10.0
+    ],
+    "r_values": [
+      0.1,
+      1.0,
+      10.0
+    ],
+    "near_upright_initial_conditions": [
+      [
+        0.1,
+        0.1,
+        0.0,
+        0.0
+      ],
+      [
+        0.25,
+        0.25,
+        0.0,
+        0.0
+      ]
+    ],
+    "angle_offsets_note": "Initial condition second entry is offset from pi in radians, converted before simulation.",
+    "force_limits_N": [
+      2.0,
+      10.0,
+      180.0
+    ],
+    "seeds": [
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "disturbance_note": "One seeded constant force pulse on [5,6) seconds, uniform [-2,2] N; same seed across controller variants.",
+    "settling_definition": "Earliest logged time with |cart|<=0.05 m, |wrapped angle-pi|<=0.05 rad, |cart velocity|<=0.1 m/s, |angular velocity|<=0.1 rad/s and all later samples also within; at least 1 second must remain.",
+    "cart_diagnostic_bound_m": 2.0,
+    "integration": "Fixed-step RK4; continuous feedback recomputed at four RK stages. No sampled-data discretization or zero-order hold.",
+    "unicycle": {
+      "duration_s": 10.0,
+      "integration_max_step_s": 0.005,
+      "rtol": 1e-08,
+      "atol": 1e-10,
+      "heading_offset_rad": 0.05,
+      "speed_scale_mismatch": 1.05
+    }
+  },
+  "cartpole": [
+    {
+      "name": "r0.1_ic0",
+      "group": "r_weight",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 0.1,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.0647155662159197,
+        "angle_rmse_rad": 0.01098048309516609,
+        "final_cart_error_m": 2.5111921636628994e-11,
+        "final_angle_error_rad": 2.55262477821816e-12,
+        "settling_time_s": 3.64,
+        "control_effort_N2s": 2.8948622395795,
+        "peak_input_N": 7.090323278202371,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08489990001544356
+      },
+      "gain": [
+        [
+          -3.1622776601684377,
+          74.06551044219208,
+          -6.715749307411842,
+          22.584160241215127
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -12.047955260968374,
+        -1.255736988719023,
+        -1.255736988719023,
+        -1.3089816953968763
+      ]
+    },
+    {
+      "name": "r1.0_ic0",
+      "group": "r_weight",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11419950585365228,
+        "angle_rmse_rad": 0.011716897844961452,
+        "final_cart_error_m": 1.81765168510427e-05,
+        "final_angle_error_rad": 7.219658777479765e-07,
+        "settling_time_s": 5.65,
+        "control_effort_N2s": 2.4047345339409913,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.0853128999879118
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "r10.0_ic0",
+      "group": "r_weight",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 10.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.25047902371753267,
+        "angle_rmse_rad": 0.011929763739057173,
+        "final_cart_error_m": 0.004726950003595773,
+        "final_angle_error_rad": 5.438670094726206e-05,
+        "settling_time_s": 10.11,
+        "control_effort_N2s": 2.11208090952045,
+        "peak_input_N": 4.465121450607507,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08381149999331683
+      },
+      "gain": [
+        [
+          -0.316227766016814,
+          44.967442272091844,
+          -1.316875881953066,
+          10.824895076935181
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -4.966066958446143,
+        -3.9561049901401244,
+        -0.2929236231979215,
+        -0.2929236231979215
+      ]
+    },
+    {
+      "name": "qtheta10.0_ic0",
+      "group": "q_weight",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1,
+        10.0,
+        1,
+        10
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11415384210113896,
+        "angle_rmse_rad": 0.01168729071945853,
+        "final_cart_error_m": 1.976992563454976e-05,
+        "final_angle_error_rad": 7.328039566267819e-07,
+        "settling_time_s": 5.67,
+        "control_effort_N2s": 2.4055488731471635,
+        "peak_input_N": 5.072351657049264,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08449720000498928
+      },
+      "gain": [
+        [
+          -0.9999999999999951,
+          51.72351657049259,
+          -2.746827159383253,
+          13.350931701539796
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.316230007531757,
+        -3.176010463770047,
+        -0.5559320354273695,
+        -0.5559320354273695
+      ]
+    },
+    {
+      "name": "qtheta100.0_ic0",
+      "group": "q_weight",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1,
+        100.0,
+        1,
+        10
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11378154783759528,
+        "angle_rmse_rad": 0.011418899954376397,
+        "final_cart_error_m": 3.865652629891955e-05,
+        "final_angle_error_rad": 6.979139528517919e-07,
+        "settling_time_s": 5.8500000000000005,
+        "control_effort_N2s": 2.4182983590289617,
+        "peak_input_N": 5.248226173283419,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08556669999961741
+      },
+      "gain": [
+        [
+          -1.0000000000000058,
+          53.48226173283415,
+          -2.811337964099332,
+          13.580020495665975
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.038064779644138,
+        -3.683371565079,
+        -0.5236230934217485,
+        -0.5236230934217485
+      ]
+    },
+    {
+      "name": "limit2.0_ic0",
+      "group": "actuator",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 2.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.4384996156160045,
+        "angle_rmse_rad": 0.02825610817508461,
+        "final_cart_error_m": 9.850055443170674e-05,
+        "final_angle_error_rad": 2.7551537717940278e-06,
+        "settling_time_s": 7.26,
+        "control_effort_N2s": 8.1957530605421,
+        "peak_input_N": 2.0,
+        "requested_limit_exceedance_fraction": 0.05897051474262868,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.05897051474262868,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08499539998592809
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "limit10.0_ic0",
+      "group": "actuator",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 10.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11419950585365228,
+        "angle_rmse_rad": 0.011716897844961452,
+        "final_cart_error_m": 1.81765168510427e-05,
+        "final_angle_error_rad": 7.219658777479765e-07,
+        "settling_time_s": 5.65,
+        "control_effort_N2s": 2.4047345339409913,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08455420000245795
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "limit180.0_ic0",
+      "group": "actuator",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11419950585365228,
+        "angle_rmse_rad": 0.011716897844961452,
+        "final_cart_error_m": 1.81765168510427e-05,
+        "final_angle_error_rad": 7.219658777479765e-07,
+        "settling_time_s": 5.65,
+        "control_effort_N2s": 2.4047345339409913,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08362900000065565
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "linearization_legacyFalse_ic0",
+      "group": "linearization",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11419950585365228,
+        "angle_rmse_rad": 0.011716897844961452,
+        "final_cart_error_m": 1.81765168510427e-05,
+        "final_angle_error_rad": 7.219658777479765e-07,
+        "settling_time_s": 5.65,
+        "control_effort_N2s": 2.4047345339409913,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08392999999341555
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "linearization_legacyTrue_ic0",
+      "group": "linearization",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": true,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.06542166112649686,
+        "angle_rmse_rad": 0.009553702519724058,
+        "final_cart_error_m": 0.014752204528547365,
+        "final_angle_error_rad": 2.0171255897150075e-05,
+        "settling_time_s": 9.46,
+        "control_effort_N2s": 3.755013092861667,
+        "peak_input_N": 7.534491160525431,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.057202700001653284
+      },
+      "gain": [
+        [
+          -1.0000000000000435,
+          76.34491160525428,
+          -9.281470269648906,
+          21.2450350674511
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.341488117898248,
+        -3.127436591432997,
+        -1.0000000000000178,
+        -0.4946400884709199
+      ]
+    },
+    {
+      "name": "r0.1_ic1",
+      "group": "r_weight",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 0.1,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.16783688150821627,
+        "angle_rmse_rad": 0.02788547818371647,
+        "final_cart_error_m": 6.431232334367263e-11,
+        "final_angle_error_rad": 6.6697758427380904e-12,
+        "settling_time_s": 4.46,
+        "control_effort_N2s": 19.40793012132169,
+        "peak_input_N": 17.72580819550591,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08318730001337826
+      },
+      "gain": [
+        [
+          -3.1622776601684377,
+          74.06551044219208,
+          -6.715749307411842,
+          22.584160241215127
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -12.047955260968374,
+        -1.255736988719023,
+        -1.255736988719023,
+        -1.3089816953968763
+      ]
+    },
+    {
+      "name": "r1.0_ic1",
+      "group": "r_weight",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.2963857008291875,
+        "angle_rmse_rad": 0.029779289799367892,
+        "final_cart_error_m": 4.696243700754882e-05,
+        "final_angle_error_rad": 1.8739275708945513e-06,
+        "settling_time_s": 6.5200000000000005,
+        "control_effort_N2s": 16.015129021896506,
+        "peak_input_N": 12.635165854084455,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08374069997807965
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "r10.0_ic1",
+      "group": "r_weight",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 10.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.6491428003465717,
+        "angle_rmse_rad": 0.030273542862899322,
+        "final_cart_error_m": 0.012229465891136458,
+        "final_angle_error_rad": 0.00014100778365699895,
+        "settling_time_s": 11.07,
+        "control_effort_N2s": 14.00364624474269,
+        "peak_input_N": 11.162803626518757,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.07961799998884089
+      },
+      "gain": [
+        [
+          -0.316227766016814,
+          44.967442272091844,
+          -1.316875881953066,
+          10.824895076935181
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -4.966066958446143,
+        -3.9561049901401244,
+        -0.2929236231979215,
+        -0.2929236231979215
+      ]
+    },
+    {
+      "name": "qtheta10.0_ic1",
+      "group": "q_weight",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1,
+        10.0,
+        1,
+        10
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.296304097613923,
+        "angle_rmse_rad": 0.029703359155353583,
+        "final_cart_error_m": 5.109535010590089e-05,
+        "final_angle_error_rad": 1.9027029902751735e-06,
+        "settling_time_s": 6.54,
+        "control_effort_N2s": 16.02092753478186,
+        "peak_input_N": 12.68087914262315,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08381409998401068
+      },
+      "gain": [
+        [
+          -0.9999999999999951,
+          51.72351657049259,
+          -2.746827159383253,
+          13.350931701539796
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.316230007531757,
+        -3.176010463770047,
+        -0.5559320354273695,
+        -0.5559320354273695
+      ]
+    },
+    {
+      "name": "qtheta100.0_ic1",
+      "group": "q_weight",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1,
+        100.0,
+        1,
+        10
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.29569025450680575,
+        "angle_rmse_rad": 0.0290152657040582,
+        "final_cart_error_m": 0.00010016295575992802,
+        "final_angle_error_rad": 1.819324764174013e-06,
+        "settling_time_s": 6.76,
+        "control_effort_N2s": 16.10929635892824,
+        "peak_input_N": 13.120565433208535,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08323779999045655
+      },
+      "gain": [
+        [
+          -1.0000000000000058,
+          53.48226173283415,
+          -2.811337964099332,
+          13.580020495665975
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.038064779644138,
+        -3.683371565079,
+        -0.5236230934217485,
+        -0.5236230934217485
+      ]
+    },
+    {
+      "name": "limit2.0_ic1",
+      "group": "actuator",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 2.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 2.26067032026416,
+        "angle_rmse_rad": 1.2568514348999076,
+        "final_cart_error_m": 7.138146846784872,
+        "final_angle_error_rad": 0.4365329491445564,
+        "settling_time_s": null,
+        "control_effort_N2s": 78.51715924576203,
+        "peak_input_N": 2.0,
+        "requested_limit_exceedance_fraction": 0.974512743628186,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.2413793103448276,
+        "clipping_fraction": 0.974512743628186,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08424549998017028
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "limit10.0_ic1",
+      "group": "actuator",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 10.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.3046416960833759,
+        "angle_rmse_rad": 0.03041885594150698,
+        "final_cart_error_m": 4.8410600765824375e-05,
+        "final_angle_error_rad": 1.926921046724317e-06,
+        "settling_time_s": 6.55,
+        "control_effort_N2s": 16.003898347672376,
+        "peak_input_N": 10.0,
+        "requested_limit_exceedance_fraction": 0.0029985007496251873,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0029985007496251873,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08500369999092072
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "limit180.0_ic1",
+      "group": "actuator",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.2963857008291875,
+        "angle_rmse_rad": 0.029779289799367892,
+        "final_cart_error_m": 4.696243700754882e-05,
+        "final_angle_error_rad": 1.8739275708945513e-06,
+        "settling_time_s": 6.5200000000000005,
+        "control_effort_N2s": 16.015129021896506,
+        "peak_input_N": 12.635165854084455,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.0847644999739714
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "linearization_legacyFalse_ic1",
+      "group": "linearization",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.2963857008291875,
+        "angle_rmse_rad": 0.029779289799367892,
+        "final_cart_error_m": 4.696243700754882e-05,
+        "final_angle_error_rad": 1.8739275708945513e-06,
+        "settling_time_s": 6.5200000000000005,
+        "control_effort_N2s": 16.015129021896506,
+        "peak_input_N": 12.635165854084455,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08256360000814311
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "linearization_legacyTrue_ic1",
+      "group": "linearization",
+      "initial": [
+        0.25,
+        3.391592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": true,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.17354505656222674,
+        "angle_rmse_rad": 0.02435052885364606,
+        "final_cart_error_m": 0.03914193575965598,
+        "final_angle_error_rad": 5.352027217631061e-05,
+        "settling_time_s": 17.89,
+        "control_effort_N2s": 25.351735821872648,
+        "peak_input_N": 18.83622790131356,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.05852339998818934
+      },
+      "gain": [
+        [
+          -1.0000000000000435,
+          76.34491160525428,
+          -9.281470269648906,
+          21.2450350674511
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.341488117898248,
+        -3.127436591432997,
+        -1.0000000000000178,
+        -0.4946400884709199
+      ]
+    },
+    {
+      "name": "basin_0.1_lqr",
+      "group": "basin",
+      "initial": [
+        0.0,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.1401322558196462,
+        "angle_rmse_rad": 0.011816521673019765,
+        "final_cart_error_m": 1.9438475860685067e-05,
+        "final_angle_error_rad": 8.688078905194629e-07,
+        "settling_time_s": 5.7,
+        "control_effort_N2s": 2.4976587846471037,
+        "peak_input_N": 5.154066341633788,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.08604630001354963
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "basin_0.1_hybrid",
+      "group": "basin",
+      "initial": [
+        0.0,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "hybrid",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.1401322558196462,
+        "angle_rmse_rad": 0.011816521673019765,
+        "final_cart_error_m": 1.9438475860685067e-05,
+        "final_angle_error_rad": 8.688078905194629e-07,
+        "settling_time_s": 5.7,
+        "control_effort_N2s": 2.4976587846471037,
+        "peak_input_N": 5.154066341633788,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.09160169999813661
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "basin_0.4_lqr",
+      "group": "basin",
+      "initial": [
+        0.0,
+        3.541592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.6124977242682215,
+        "angle_rmse_rad": 0.04967635392292396,
+        "final_cart_error_m": 8.480593051164321e-05,
+        "final_angle_error_rad": 3.802922736273473e-06,
+        "settling_time_s": 6.82,
+        "control_effort_N2s": 47.78324849034156,
+        "peak_input_N": 20.61626536653513,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.4026204999827314
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "basin_0.4_hybrid",
+      "group": "basin",
+      "initial": [
+        0.0,
+        3.541592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "hybrid",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.6135614207812536,
+        "angle_rmse_rad": 0.04972103460112181,
+        "final_cart_error_m": 8.50332541491305e-05,
+        "final_angle_error_rad": 3.810144348470601e-06,
+        "settling_time_s": 6.82,
+        "control_effort_N2s": 47.88981203693336,
+        "peak_input_N": 20.61626536653513,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.38568999999552034
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "basin_0.8_lqr",
+      "group": "basin",
+      "initial": [
+        0.0,
+        3.941592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 1.634044020416175,
+        "angle_rmse_rad": 0.12014388323835348,
+        "final_cart_error_m": 0.00021474009092875223,
+        "final_angle_error_rad": 1.0205314164846158e-05,
+        "settling_time_s": 10.6,
+        "control_effort_N2s": 337.51071732959014,
+        "peak_input_N": 41.23253073307026,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.17691154422788605,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.40487329999450594
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "basin_0.8_hybrid",
+      "group": "basin",
+      "initial": [
+        0.0,
+        3.941592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "hybrid",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.09702621529991233,
+        "angle_rmse_rad": 0.4493303146078201,
+        "final_cart_error_m": 4.538822197801285e-06,
+        "final_angle_error_rad": 4.5598452835804437e-07,
+        "settling_time_s": 4.2700000000000005,
+        "control_effort_N2s": 296.20401279794345,
+        "peak_input_N": 30.452422093914524,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 1,
+        "elapsed_seconds": 0.359340399998473
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "basin_1.2_lqr",
+      "group": "basin",
+      "initial": [
+        0.0,
+        4.341592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": true,
+        "settling_time_s": null,
+        "elapsed_seconds": 0.07007690001046285
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "basin_1.2_hybrid",
+      "group": "basin",
+      "initial": [
+        0.0,
+        4.341592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "hybrid",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.4562908384911268,
+        "angle_rmse_rad": 0.6364438058041821,
+        "final_cart_error_m": 0.00017008749215366656,
+        "final_angle_error_rad": 9.203816786040875e-06,
+        "settling_time_s": 9.71,
+        "control_effort_N2s": 627.3405650402071,
+        "peak_input_N": 40.844383638958305,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 1,
+        "elapsed_seconds": 0.298111100011738
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "swing_exact_down",
+      "group": "swingup",
+      "initial": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "hybrid",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.0,
+        "angle_rmse_rad": 3.141592653589793,
+        "final_cart_error_m": 0.0,
+        "final_angle_error_rad": 3.141592653589793,
+        "settling_time_s": null,
+        "control_effort_N2s": 0.0,
+        "peak_input_N": 0.0,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.3624095999985002
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "swing_30deg",
+      "group": "swingup",
+      "initial": [
+        0.0,
+        0.5235987755982988,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "hybrid",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 1.2581697975713702,
+        "angle_rmse_rad": 0.6218102635405401,
+        "final_cart_error_m": 0.0004019329906304389,
+        "final_angle_error_rad": 1.2587076897219163e-05,
+        "settling_time_s": 9.84,
+        "control_effort_N2s": 1004.528191587725,
+        "peak_input_N": 64.61061155803482,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.10644677661169415,
+        "clipping_fraction": 0.0,
+        "mode_switches": 1,
+        "elapsed_seconds": 0.3549864999949932
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "swing_wrapped_30deg",
+      "group": "swingup",
+      "initial": [
+        0.0,
+        6.806784082777885,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "hybrid",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 1.2581697975713526,
+        "angle_rmse_rad": 0.6218102635405397,
+        "final_cart_error_m": 0.00040193299055167977,
+        "final_angle_error_rad": 1.2587076893666449e-05,
+        "settling_time_s": 9.84,
+        "control_effort_N2s": 1004.5281915877234,
+        "peak_input_N": 64.6106115580349,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.10644677661169415,
+        "clipping_fraction": 0.0,
+        "mode_switches": 1,
+        "elapsed_seconds": 0.39592650000122376
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r0.1_seed101",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 0.1,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 101,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.7741300224422156,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.09435154040244174,
+        "angle_rmse_rad": 0.013199393595083599,
+        "final_cart_error_m": 6.722175647524927e-08,
+        "final_angle_error_rad": 6.993670531585394e-09,
+        "settling_time_s": 9.34,
+        "control_effort_N2s": 8.401327734260404,
+        "peak_input_N": 7.090323278202371,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.3401820999861229
+      },
+      "gain": [
+        [
+          -3.1622776601684377,
+          74.06551044219208,
+          -6.715749307411842,
+          22.584160241215127
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -12.047955260968374,
+        -1.255736988719023,
+        -1.255736988719023,
+        -1.3089816953968763
+      ]
+    },
+    {
+      "name": "disturb_r1.0_seed101",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 101,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.7741300224422156,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.21874252590511187,
+        "angle_rmse_rad": 0.017025913234432446,
+        "final_cart_error_m": 0.0002294329325878975,
+        "final_angle_error_rad": 4.01151279909584e-05,
+        "settling_time_s": 11.74,
+        "control_effort_N2s": 10.245398090847871,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.28878699999768287
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r10.0_seed101",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 10.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 101,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.7741300224422156,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.5712441420884437,
+        "angle_rmse_rad": 0.0185224089739686,
+        "final_cart_error_m": 0.0365696195855302,
+        "final_angle_error_rad": 0.0006093319658972973,
+        "settling_time_s": 16.15,
+        "control_effort_N2s": 10.733568987533262,
+        "peak_input_N": 4.465121450607507,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.2517340999911539
+      },
+      "gain": [
+        [
+          -0.316227766016814,
+          44.967442272091844,
+          -1.316875881953066,
+          10.824895076935181
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -4.966066958446143,
+        -3.9561049901401244,
+        -0.2929236231979215,
+        -0.2929236231979215
+      ]
+    },
+    {
+      "name": "mismatchFalse_seed101",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 101,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.7741300224422156,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.21874252590511187,
+        "angle_rmse_rad": 0.017025913234432446,
+        "final_cart_error_m": 0.0002294329325878975,
+        "final_angle_error_rad": 4.01151279909584e-05,
+        "settling_time_s": 11.74,
+        "control_effort_N2s": 10.245398090847871,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.25736209997558035
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "mismatchTrue_seed101",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.25,
+        "length": 1.15,
+        "gravity": 9.81
+      },
+      "seed": 101,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.7741300224422156,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.2225916129645061,
+        "angle_rmse_rad": 0.01851746375680916,
+        "final_cart_error_m": 0.0001448937398364615,
+        "final_angle_error_rad": 1.340399313543017e-05,
+        "settling_time_s": 11.620000000000001,
+        "control_effort_N2s": 12.592622895575733,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.25939399999333546
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r0.1_seed102",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 0.1,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 102,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -1.3600354199827853,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.08328003011113226,
+        "angle_rmse_rad": 0.012261041439353935,
+        "final_cart_error_m": 5.158560794479103e-08,
+        "final_angle_error_rad": 5.3654383158630026e-09,
+        "settling_time_s": 9.08,
+        "control_effort_N2s": 6.021692508598675,
+        "peak_input_N": 7.090323278202371,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.281692499993369
+      },
+      "gain": [
+        [
+          -3.1622776601684377,
+          74.06551044219208,
+          -6.715749307411842,
+          22.584160241215127
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -12.047955260968374,
+        -1.255736988719023,
+        -1.255736988719023,
+        -1.3089816953968763
+      ]
+    },
+    {
+      "name": "disturb_r1.0_seed102",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 102,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -1.3600354199827853,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.18195638761906846,
+        "angle_rmse_rad": 0.01494063365775738,
+        "final_cart_error_m": 0.00020794504279679444,
+        "final_angle_error_rad": 3.2008700426633396e-05,
+        "settling_time_s": 11.57,
+        "control_effort_N2s": 6.724120678059631,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.2759481999964919
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r10.0_seed102",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 10.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 102,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -1.3600354199827853,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.3856005890472934,
+        "angle_rmse_rad": 0.016606841184625014,
+        "final_cart_error_m": 0.019664079659228353,
+        "final_angle_error_rad": 0.0005627667084375787,
+        "settling_time_s": 16.5,
+        "control_effort_N2s": 7.356954639006387,
+        "peak_input_N": 4.465121450607507,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.2999081000161823
+      },
+      "gain": [
+        [
+          -0.316227766016814,
+          44.967442272091844,
+          -1.316875881953066,
+          10.824895076935181
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -4.966066958446143,
+        -3.9561049901401244,
+        -0.2929236231979215,
+        -0.2929236231979215
+      ]
+    },
+    {
+      "name": "mismatchFalse_seed102",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 102,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -1.3600354199827853,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.18195638761906846,
+        "angle_rmse_rad": 0.01494063365775738,
+        "final_cart_error_m": 0.00020794504279679444,
+        "final_angle_error_rad": 3.2008700426633396e-05,
+        "settling_time_s": 11.57,
+        "control_effort_N2s": 6.724120678059631,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.3275863000017125
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "mismatchTrue_seed102",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.25,
+        "length": 1.15,
+        "gravity": 9.81
+      },
+      "seed": 102,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -1.3600354199827853,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.18375166909828233,
+        "angle_rmse_rad": 0.016109177782161803,
+        "final_cart_error_m": 0.00011605115784079479,
+        "final_angle_error_rad": 1.0392938684766762e-05,
+        "settling_time_s": 11.370000000000001,
+        "control_effort_N2s": 8.35828233013145,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.3457877000037115
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r0.1_seed103",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 0.1,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 103,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -0.74926706910821,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.07084376786283202,
+        "angle_rmse_rad": 0.011373500300817428,
+        "final_cart_error_m": 2.843842424693471e-08,
+        "final_angle_error_rad": 2.957053268914933e-09,
+        "settling_time_s": 8.42,
+        "control_effort_N2s": 3.8285829052881506,
+        "peak_input_N": 7.090323278202371,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.32079199998406693
+      },
+      "gain": [
+        [
+          -3.1622776601684377,
+          74.06551044219208,
+          -6.715749307411842,
+          22.584160241215127
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -12.047955260968374,
+        -1.255736988719023,
+        -1.255736988719023,
+        -1.3089816953968763
+      ]
+    },
+    {
+      "name": "disturb_r1.0_seed103",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 103,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -0.74926706910821,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.13812865108124625,
+        "angle_rmse_rad": 0.01276102863773171,
+        "final_cart_error_m": 0.00012282323668006532,
+        "final_angle_error_rad": 1.7959493547881067e-05,
+        "settling_time_s": 10.94,
+        "control_effort_N2s": 3.675262286740704,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.303684600017732
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r10.0_seed103",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 10.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 103,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -0.74926706910821,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.2813585243737409,
+        "angle_rmse_rad": 0.013600454985178242,
+        "final_cart_error_m": 0.008699484335318938,
+        "final_angle_error_rad": 0.0003343092001397707,
+        "settling_time_s": 15.92,
+        "control_effort_N2s": 3.7281983043321953,
+        "peak_input_N": 4.465121450607507,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.2543002000020351
+      },
+      "gain": [
+        [
+          -0.316227766016814,
+          44.967442272091844,
+          -1.316875881953066,
+          10.824895076935181
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -4.966066958446143,
+        -3.9561049901401244,
+        -0.2929236231979215,
+        -0.2929236231979215
+      ]
+    },
+    {
+      "name": "mismatchFalse_seed103",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 103,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -0.74926706910821,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.13812865108124625,
+        "angle_rmse_rad": 0.01276102863773171,
+        "final_cart_error_m": 0.00012282323668006532,
+        "final_angle_error_rad": 1.7959493547881067e-05,
+        "settling_time_s": 10.94,
+        "control_effort_N2s": 3.675262286740704,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.2570842999848537
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "mismatchTrue_seed103",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.25,
+        "length": 1.15,
+        "gravity": 9.81
+      },
+      "seed": 103,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": -0.74926706910821,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.1394912542637543,
+        "angle_rmse_rad": 0.013615032686805032,
+        "final_cart_error_m": 6.525801740791588e-05,
+        "final_angle_error_rad": 5.75817897008335e-06,
+        "settling_time_s": 10.68,
+        "control_effort_N2s": 4.688044476531977,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.25842840000404976
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r0.1_seed104",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 0.1,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 104,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.3542592494781425,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.08329343965735612,
+        "angle_rmse_rad": 0.012331522707192058,
+        "final_cart_error_m": 5.131990663853371e-08,
+        "final_angle_error_rad": 5.33781241429665e-09,
+        "settling_time_s": 9.07,
+        "control_effort_N2s": 6.117652157826611,
+        "peak_input_N": 7.090323278202371,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.25510889998986386
+      },
+      "gain": [
+        [
+          -3.1622776601684377,
+          74.06551044219208,
+          -6.715749307411842,
+          22.584160241215127
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -12.047955260968374,
+        -1.255736988719023,
+        -1.255736988719023,
+        -1.3089816953968763
+      ]
+    },
+    {
+      "name": "disturb_r1.0_seed104",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 104,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.3542592494781425,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.1826394819364556,
+        "angle_rmse_rad": 0.015054464360178805,
+        "final_cart_error_m": 0.00017095395473290455,
+        "final_angle_error_rad": 3.044684394515329e-05,
+        "settling_time_s": 11.47,
+        "control_effort_N2s": 7.009365384598497,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.29340130000491627
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r10.0_seed104",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 10.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 104,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.3542592494781425,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.47462826652861395,
+        "angle_rmse_rad": 0.016034254844499437,
+        "final_cart_error_m": 0.029013546402695493,
+        "final_angle_error_rad": 0.0004519328992032001,
+        "settling_time_s": 15.82,
+        "control_effort_N2s": 7.107519818903186,
+        "peak_input_N": 4.465121450607507,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.27294990001246333
+      },
+      "gain": [
+        [
+          -0.316227766016814,
+          44.967442272091844,
+          -1.316875881953066,
+          10.824895076935181
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -4.966066958446143,
+        -3.9561049901401244,
+        -0.2929236231979215,
+        -0.2929236231979215
+      ]
+    },
+    {
+      "name": "mismatchFalse_seed104",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 104,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.3542592494781425,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.1826394819364556,
+        "angle_rmse_rad": 0.015054464360178805,
+        "final_cart_error_m": 0.00017095395473290455,
+        "final_angle_error_rad": 3.044684394515329e-05,
+        "settling_time_s": 11.47,
+        "control_effort_N2s": 7.009365384598497,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.32483299999148585
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "mismatchTrue_seed104",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.25,
+        "length": 1.15,
+        "gravity": 9.81
+      },
+      "seed": 104,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 1.3542592494781425,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.18589464580063675,
+        "angle_rmse_rad": 0.016271933005091006,
+        "final_cart_error_m": 0.00010999922518269935,
+        "final_angle_error_rad": 1.0215372689525992e-05,
+        "settling_time_s": 11.33,
+        "control_effort_N2s": 8.696639433669366,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.3692115999874659
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r0.1_seed105",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 0.1,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 105,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.5527813344061783,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.06818544505461975,
+        "angle_rmse_rad": 0.011227560946008089,
+        "final_cart_error_m": 2.093889623399175e-08,
+        "final_angle_error_rad": 2.1772113001361504e-09,
+        "settling_time_s": 8.01,
+        "control_effort_N2s": 3.4465781204246233,
+        "peak_input_N": 7.090323278202371,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.3338780000049155
+      },
+      "gain": [
+        [
+          -3.1622776601684377,
+          74.06551044219208,
+          -6.715749307411842,
+          22.584160241215127
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -12.047955260968374,
+        -1.255736988719023,
+        -1.255736988719023,
+        -1.3089816953968763
+      ]
+    },
+    {
+      "name": "disturb_r1.0_seed105",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 105,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.5527813344061783,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.12834417140313498,
+        "angle_rmse_rad": 0.012355566581438103,
+        "final_cart_error_m": 5.907205606789465e-05,
+        "final_angle_error_rad": 1.1998059828322027e-05,
+        "settling_time_s": 10.33,
+        "control_effort_N2s": 3.2103418647808777,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.30126779997954145
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "disturb_r10.0_seed105",
+      "group": "disturbance",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 10.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 105,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.5527813344061783,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.3148385147687699,
+        "angle_rmse_rad": 0.012621278412006394,
+        "final_cart_error_m": 0.014630755846101816,
+        "final_angle_error_rad": 0.00015212544255360783,
+        "settling_time_s": 14.38,
+        "control_effort_N2s": 2.9188713890591518,
+        "peak_input_N": 4.465121450607507,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.4217814000148792
+      },
+      "gain": [
+        [
+          -0.316227766016814,
+          44.967442272091844,
+          -1.316875881953066,
+          10.824895076935181
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -4.966066958446143,
+        -3.9561049901401244,
+        -0.2929236231979215,
+        -0.2929236231979215
+      ]
+    },
+    {
+      "name": "mismatchFalse_seed105",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": 105,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.5527813344061783,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.12834417140313498,
+        "angle_rmse_rad": 0.012355566581438103,
+        "final_cart_error_m": 5.907205606789465e-05,
+        "final_angle_error_rad": 1.1998059828322027e-05,
+        "settling_time_s": 10.33,
+        "control_effort_N2s": 3.2103418647808777,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.3564589000015985
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "mismatchTrue_seed105",
+      "group": "mismatch",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.25,
+        "length": 1.15,
+        "gravity": 9.81
+      },
+      "seed": 105,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.5527813344061783,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.13051000081074154,
+        "angle_rmse_rad": 0.013165723649618778,
+        "final_cart_error_m": 4.325245287962162e-05,
+        "final_angle_error_rad": 4.128227784061522e-06,
+        "settling_time_s": 10.200000000000001,
+        "control_effort_N2s": 4.126255814764001,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.29804340002010576
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "convergence_dt0.02",
+      "group": "integration",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.02,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11418191003603345,
+        "angle_rmse_rad": 0.011820086237135012,
+        "final_cart_error_m": 1.8176515410797382e-05,
+        "final_angle_error_rad": 7.219658235690929e-07,
+        "settling_time_s": 5.66,
+        "control_effort_N2s": 2.412169266897499,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.18814489999203943
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "convergence_dt0.01",
+      "group": "integration",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.01,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11419950585365228,
+        "angle_rmse_rad": 0.011716897844961452,
+        "final_cart_error_m": 1.81765168510427e-05,
+        "final_angle_error_rad": 7.219658777479765e-07,
+        "settling_time_s": 5.65,
+        "control_effort_N2s": 2.4047345339409913,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.34761329999309964
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "convergence_dt0.005",
+      "group": "integration",
+      "initial": [
+        0.1,
+        3.241592653589793,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "lqr",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.005,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 0.11420830584282417,
+        "angle_rmse_rad": 0.011664918822640065,
+        "final_cart_error_m": 1.8176516902290898e-05,
+        "final_angle_error_rad": 7.219658848534038e-07,
+        "settling_time_s": 5.6450000000000005,
+        "control_effort_N2s": 2.402874804979403,
+        "peak_input_N": 5.054066341633787,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.0,
+        "clipping_fraction": 0.0,
+        "mode_switches": 0,
+        "elapsed_seconds": 0.5155421000090428
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    },
+    {
+      "name": "swing_convergence_dt0.005",
+      "group": "integration",
+      "initial": [
+        0.0,
+        0.5235987755982988,
+        0.0,
+        0.0
+      ],
+      "r": 1.0,
+      "q": [
+        1.0,
+        1.0,
+        1.0,
+        10.0
+      ],
+      "limit": 180.0,
+      "legacy": false,
+      "mode": "hybrid",
+      "plant": {
+        "mc": 1.0,
+        "mp": 1.0,
+        "length": 1.0,
+        "gravity": 9.81
+      },
+      "seed": null,
+      "dt": 0.005,
+      "duration": 20.0,
+      "disturbance_force_N": 0.0,
+      "metrics": {
+        "stopped": false,
+        "cart_rmse_m": 1.2581882682702328,
+        "angle_rmse_rad": 0.6211888433036356,
+        "final_cart_error_m": 0.00040171828245953343,
+        "final_angle_error_rad": 1.2580580834864463e-05,
+        "settling_time_s": 9.835,
+        "control_effort_N2s": 1004.1918111617815,
+        "peak_input_N": 64.72730547564547,
+        "requested_limit_exceedance_fraction": 0.0,
+        "applied_limit_violation_fraction": 0.0,
+        "cart_bound_exceedance_fraction": 0.10672331917020744,
+        "clipping_fraction": 0.0,
+        "mode_switches": 1,
+        "elapsed_seconds": 0.20768710001721047
+      },
+      "gain": [
+        [
+          -1.000000000000015,
+          51.540663416337836,
+          -2.7400329401331964,
+          13.326879818816009
+        ]
+      ],
+      "design_closed_loop_eigenvalues_real": [
+        -6.339997466122861,
+        -3.1274366392582795,
+        -0.5597063866508352,
+        -0.5597063866508352
+      ]
+    }
+  ],
+  "unicycle": [
+    {
+      "condition": "nominal",
+      "seed": 101,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.0,
+      "position_rmse_m": 1.3062195169717733e-05,
+      "final_position_error_m": 2.6440196643321622e-05,
+      "sampled_min_clearance_m": 1.4241198811448057,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 22.495208086563167,
+      "peak_yaw_rate_radps": 36.39077397810851,
+      "final_reference_speed_mps": 19.962892613901225,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.887065011221108,
+        "y": 4.827668465297338,
+        "z": 2.2141143037498225
+      }
+    },
+    {
+      "condition": "heading_offset",
+      "seed": 101,
+      "heading_offset_rad": 0.05,
+      "speed_scale": 1.0,
+      "position_rmse_m": 0.37912374126444065,
+      "final_position_error_m": 0.49995360231408903,
+      "sampled_min_clearance_m": 1.4241198811448057,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 22.495208086563167,
+      "peak_yaw_rate_radps": 36.39077397810851,
+      "final_reference_speed_mps": 19.962892613901225,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.887065011221108,
+        "y": 4.827668465297338,
+        "z": 2.2141143037498225
+      }
+    },
+    {
+      "condition": "speed_mismatch",
+      "seed": 101,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.05,
+      "position_rmse_m": 0.3791625389118378,
+      "final_position_error_m": 0.5000033876547212,
+      "sampled_min_clearance_m": 1.4241198811448057,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 22.495208086563167,
+      "peak_yaw_rate_radps": 36.39077397810851,
+      "final_reference_speed_mps": 19.962892613901225,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.887065011221108,
+        "y": 4.827668465297338,
+        "z": 2.2141143037498225
+      }
+    },
+    {
+      "condition": "nominal",
+      "seed": 102,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.0,
+      "position_rmse_m": 9.535030136799216e-07,
+      "final_position_error_m": 1.931128730586161e-06,
+      "sampled_min_clearance_m": 2.502591973430946,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 3.6504388765472355,
+      "peak_yaw_rate_radps": 3.3259049977456785,
+      "final_reference_speed_mps": 3.6504388765472355,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 2.3199822900086073,
+        "y": 5.374716768821208,
+        "z": 1.5025911758353336
+      }
+    },
+    {
+      "condition": "heading_offset",
+      "seed": 102,
+      "heading_offset_rad": 0.05,
+      "speed_scale": 1.0,
+      "position_rmse_m": 0.32533072677362834,
+      "final_position_error_m": 0.49994793115935915,
+      "sampled_min_clearance_m": 2.232093393100102,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 3.6504388765472355,
+      "peak_yaw_rate_radps": 3.3259049977456785,
+      "final_reference_speed_mps": 3.6504388765472355,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 2.3199822900086073,
+        "y": 5.374716768821208,
+        "z": 1.5025911758353336
+      }
+    },
+    {
+      "condition": "speed_mismatch",
+      "seed": 102,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.05,
+      "position_rmse_m": 0.3253650316012994,
+      "final_position_error_m": 0.5000015493269923,
+      "sampled_min_clearance_m": 2.6685949112177725,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 3.6504388765472355,
+      "peak_yaw_rate_radps": 3.3259049977456785,
+      "final_reference_speed_mps": 3.6504388765472355,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 2.3199822900086073,
+        "y": 5.374716768821208,
+        "z": 1.5025911758353336
+      }
+    },
+    {
+      "condition": "nominal",
+      "seed": 103,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.0,
+      "position_rmse_m": 6.239058626353815e-07,
+      "final_position_error_m": 1.2163381851102854e-06,
+      "sampled_min_clearance_m": 1.6781356374728107,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 12.965132515139931,
+      "peak_yaw_rate_radps": 21.123422219785493,
+      "final_reference_speed_mps": 2.3620506350204287,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 2.625366465445895,
+        "y": 3.9663953905386196,
+        "z": -1.6696819923984663
+      }
+    },
+    {
+      "condition": "heading_offset",
+      "seed": 103,
+      "heading_offset_rad": 0.05,
+      "speed_scale": 1.0,
+      "position_rmse_m": 0.33390249281275125,
+      "final_position_error_m": 0.49994710726259795,
+      "sampled_min_clearance_m": 1.6781356374728107,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 12.965132515139931,
+      "peak_yaw_rate_radps": 21.123422219785493,
+      "final_reference_speed_mps": 2.3620506350204287,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 2.625366465445895,
+        "y": 3.9663953905386196,
+        "z": -1.6696819923984663
+      }
+    },
+    {
+      "condition": "speed_mismatch",
+      "seed": 103,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.05,
+      "position_rmse_m": 0.3339385734800263,
+      "final_position_error_m": 0.5000015812191221,
+      "sampled_min_clearance_m": 1.6781356374728107,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 12.965132515139931,
+      "peak_yaw_rate_radps": 21.123422219785493,
+      "final_reference_speed_mps": 2.3620506350204287,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 2.625366465445895,
+        "y": 3.9663953905386196,
+        "z": -1.6696819923984663
+      }
+    },
+    {
+      "condition": "nominal",
+      "seed": 104,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.0,
+      "position_rmse_m": 3.915620067718027e-06,
+      "final_position_error_m": 1.0265747147076993e-05,
+      "sampled_min_clearance_m": 1.450950402060423,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 21.606046590872417,
+      "peak_yaw_rate_radps": 35.75027449279701,
+      "final_reference_speed_mps": 21.606046590872417,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.677129624739071,
+        "y": 5.3162260383333555,
+        "z": -2.0879563610430525
+      }
+    },
+    {
+      "condition": "heading_offset",
+      "seed": 104,
+      "heading_offset_rad": 0.05,
+      "speed_scale": 1.0,
+      "position_rmse_m": 0.36960667627249344,
+      "final_position_error_m": 0.4999410798499949,
+      "sampled_min_clearance_m": 1.663017381959377,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 21.606046590872417,
+      "peak_yaw_rate_radps": 35.75027449279701,
+      "final_reference_speed_mps": 21.606046590872417,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.677129624739071,
+        "y": 5.3162260383333555,
+        "z": -2.0879563610430525
+      }
+    },
+    {
+      "condition": "speed_mismatch",
+      "seed": 104,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.05,
+      "position_rmse_m": 0.36964611799353514,
+      "final_position_error_m": 0.4999924266950344,
+      "sampled_min_clearance_m": 1.9113373391470478,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 21.606046590872417,
+      "peak_yaw_rate_radps": 35.75027449279701,
+      "final_reference_speed_mps": 21.606046590872417,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.677129624739071,
+        "y": 5.3162260383333555,
+        "z": -2.0879563610430525
+      }
+    },
+    {
+      "condition": "nominal",
+      "seed": 105,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.0,
+      "position_rmse_m": 7.086028580024761e-07,
+      "final_position_error_m": 4.678701363267247e-06,
+      "sampled_min_clearance_m": 1.349883163217691,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 20.043736197460753,
+      "peak_yaw_rate_radps": 36.27970455538919,
+      "final_reference_speed_mps": 20.043736197460753,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.2763906672030894,
+        "y": 6.202709535946283,
+        "z": -2.6425436970651797
+      }
+    },
+    {
+      "condition": "heading_offset",
+      "seed": 105,
+      "heading_offset_rad": 0.05,
+      "speed_scale": 1.0,
+      "position_rmse_m": 0.35246198752874364,
+      "final_position_error_m": 0.49994809515368427,
+      "sampled_min_clearance_m": 1.642856289170763,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 20.043736197460753,
+      "peak_yaw_rate_radps": 36.27970455538919,
+      "final_reference_speed_mps": 20.043736197460753,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.2763906672030894,
+        "y": 6.202709535946283,
+        "z": -2.6425436970651797
+      }
+    },
+    {
+      "condition": "speed_mismatch",
+      "seed": 105,
+      "heading_offset_rad": 0.0,
+      "speed_scale": 1.05,
+      "position_rmse_m": 0.3524994913622162,
+      "final_position_error_m": 0.5000057144402319,
+      "sampled_min_clearance_m": 1.7683886152717063,
+      "sampled_collision_fraction": 0.0,
+      "peak_speed_mps": 20.043736197460753,
+      "peak_yaw_rate_radps": 36.27970455538919,
+      "final_reference_speed_mps": 20.043736197460753,
+      "positive_forward_derivative": true,
+      "solver_success": true,
+      "obstacle": {
+        "radius": 3.2763906672030894,
+        "y": 6.202709535946283,
+        "z": -2.6425436970651797
+      }
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "original_commit": "3efbb4c",
+  "files": [
+    {
+      "path": "Init.ipynb",
+      "sha256": "e9f436397dfcbaf937ef1c3f4a65ec496111b7f59b99945655758e33fabb9bfe"
+    },
+    {
+      "path": "cartpole.py",
+      "sha256": "c658543b6668b62f1184ff24c1d7ca408f68acd6356a40cb406d7d993b865cda"
+    },
+    {
+      "path": "cartpole_sim.py",
+      "sha256": "f9e376648cd4b6ba6fd5262082dc0be6d473a63cf0640ee5c5ae4647096e3271"
+    },
+    {
+      "path": "cartpole_trajectory.png",
+      "sha256": "9044daaf811cc967859040b8c1eacad32cbb7a5ea56c2a29b3df83e808b78dbe"
+    },
+    {
+      "path": "generate_unicycle_plot.py",
+      "sha256": "ab717faf0f866c85fb31423ed091d3f780f6300d7370c1ef5efe580be512e8da"
+    },
+    {
+      "path": "hw3.ipynb",
+      "sha256": "082ebb3cac7a18c4f6ad0d2011617de5bf2d0468cefea146abbb81292d54359c"
+    },
+    {
+      "path": "plot_unicycle_trajectory.py",
+      "sha256": "f015707ae6b27056da8b39a7e22480af9c62114d769b8b8af02f7a02611ca083"
+    },
+    {
+      "path": "simulate_unicycle.py",
+      "sha256": "1d31530e8df0247290e3dd38ab624769dd886f80c910aceb4149d06fbbee8001"
+    },
+    {
+      "path": "unicycle_input.py",
+      "sha256": "f10a18ac95bea71a43568f032fe05eb916b0c8d23457ab5c41ba9a16567f9566"
+    },
+    {
+      "path": "unicycle_sim.py",
+      "sha256": "bbd9b39011e27d97086f8f17f7525572457c8d4309569051e5fdb62eeff6c157"
+    },
+    {
+      "path": "unicycle_spline.py",
+      "sha256": "f9c5717d53622142aa63e365998700efeff8b5d1ad03fef18d74ab89e148d59e"
+    },
+    {
+      "path": "unicycle_trajectory.png",
+      "sha256": "19ab8aedc957afc3c9d65ade59317b0a69064cdaae62f55b17f90719058f5e9e"
+    }
+  ]
+}

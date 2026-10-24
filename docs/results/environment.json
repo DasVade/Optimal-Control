@@ -1,0 +1,9 @@
+{
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "numpy": "2.5.4",
+  "elapsed_seconds": 30.33721080000396,
+  "base_commit": "3efbb4c90145d1d0266c4a7ccb967195270fa70b",
+  "configuration_sha256": "ae1509955e7a39991758fc2e0e0bb087123b6bf2ec5ac64f655e32ced5adec29",
+  "execution": "Local CPU only; no paid jobs or hardware experiments."
+}
