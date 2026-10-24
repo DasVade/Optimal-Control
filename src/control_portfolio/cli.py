@@ -2,6 +2,7 @@ import argparse
 import csv
 from datetime import datetime,timezone
 import hashlib
+import importlib.metadata
 import json
 import os
 from pathlib import Path
@@ -77,13 +78,14 @@ def run_suite(output,config):
 
 def main():
     parser=argparse.ArgumentParser(description='Audited cart-pole and unicycle coursework experiments')
-    parser.add_argument('task',choices=['benchmark','suite'])
-    parser.add_argument('--config',type=Path,default=ROOT/'configs/experiments.json')
+    parser.add_argument('task',choices=['benchmark','suite','robotics-benchmark','quadrotor','minsnap','ilqr','ilqr-benchmark','acrobot','acrobot-benchmark','supporting','osc'])
+    parser.add_argument('--config',type=Path,default=None)
     parser.add_argument('--output',type=Path,default=None)
     args=parser.parse_args()
     output=args.output or ROOT/'outputs'/datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     if output.exists():raise FileExistsError(f'Refusing to overwrite an existing experiment: {output}')
     output.mkdir(parents=True)
+    args.config=args.config or ROOT/('configs/experiments.json' if args.task in ('benchmark','suite') else 'configs/robotics.json')
     config=json.loads(args.config.read_text())
     write_json(output/'config.json',config)
     start=time.perf_counter()
@@ -93,14 +95,19 @@ def main():
                 'estimated_60_twenty_second_runs_seconds':run['elapsed_seconds']*10*60,
                 'note':'Linear extrapolation; excludes unicycle, plotting, CARE solves and difficult hybrid trajectories.'}
         write_json(output/'benchmark.json',result);print(json.dumps(result,indent=2))
-    else:
+    elif args.task=='suite':
         counts=run_suite(output,config);print('Completed',counts,flush=True)
+    else:
+        from .robotics_experiments import run
+        run(args.task,output,config)
     try:commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
     except subprocess.CalledProcessError:commit=None
     write_json(output/'environment.json',{'python':platform.python_version(),'platform':platform.platform(),
               'cpu':platform.processor(),'logical_cpu_count':os.cpu_count(),
               'numpy':np.__version__,'elapsed_seconds':time.perf_counter()-start,'base_commit':commit,
               'configuration_sha256':hashlib.sha256(args.config.read_bytes()).hexdigest(),
+              'dependencies':{name:importlib.metadata.version(name) for name in ['numpy','scipy','matplotlib','pillow','osqp']},
+              'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in (ROOT/'src/control_portfolio').glob('*.py')},
               'execution':'Local CPU only; no paid jobs or hardware experiments.'})
 
 
