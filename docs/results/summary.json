@@ -1,0 +1,79 @@
+{
+  "cartpole_cases": 60,
+  "unicycle_cases": 15,
+  "r_weight_ic0": {
+    "0.1": {
+      "stopped": false,
+      "cart_rmse_m": 0.0647155662159197,
+      "angle_rmse_rad": 0.01098048309516609,
+      "final_cart_error_m": 2.5111921636628994e-11,
+      "final_angle_error_rad": 2.55262477821816e-12,
+      "settling_time_s": 3.64,
+      "control_effort_N2s": 2.8948622395795,
+      "peak_input_N": 7.090323278202371,
+      "requested_limit_exceedance_fraction": 0.0,
+      "applied_limit_violation_fraction": 0.0,
+      "cart_bound_exceedance_fraction": 0.0,
+      "clipping_fraction": 0.0,
+      "mode_switches": 0,
+      "elapsed_seconds": 0.08489990001544356
+    },
+    "1.0": {
+      "stopped": false,
+      "cart_rmse_m": 0.11419950585365228,
+      "angle_rmse_rad": 0.011716897844961452,
+      "final_cart_error_m": 1.81765168510427e-05,
+      "final_angle_error_rad": 7.219658777479765e-07,
+      "settling_time_s": 5.65,
+      "control_effort_N2s": 2.4047345339409913,
+      "peak_input_N": 5.054066341633787,
+      "requested_limit_exceedance_fraction": 0.0,
+      "applied_limit_violation_fraction": 0.0,
+      "cart_bound_exceedance_fraction": 0.0,
+      "clipping_fraction": 0.0,
+      "mode_switches": 0,
+      "elapsed_seconds": 0.0853128999879118
+    },
+    "10.0": {
+      "stopped": false,
+      "cart_rmse_m": 0.25047902371753267,
+      "angle_rmse_rad": 0.011929763739057173,
+      "final_cart_error_m": 0.004726950003595773,
+      "final_angle_error_rad": 5.438670094726206e-05,
+      "settling_time_s": 10.11,
+      "control_effort_N2s": 2.11208090952045,
+      "peak_input_N": 4.465121450607507,
+      "requested_limit_exceedance_fraction": 0.0,
+      "applied_limit_violation_fraction": 0.0,
+      "cart_bound_exceedance_fraction": 0.0,
+      "clipping_fraction": 0.0,
+      "mode_switches": 0,
+      "elapsed_seconds": 0.08381149999331683
+    }
+  },
+  "stopped_cases": [
+    "basin_1.2_lqr"
+  ],
+  "unsettled_cases": [
+    "limit2.0_ic1",
+    "basin_1.2_lqr",
+    "swing_exact_down"
+  ],
+  "unicycle": {
+    "nominal": {
+      "position_rmse_m": 3.8527653943507075e-06,
+      "final_position_error_m": 8.906422413872462e-06,
+      "sampled_min_clearance_m": 1.6811362114653352
+    },
+    "heading_offset": {
+      "position_rmse_m": 0.35208512493041144,
+      "final_position_error_m": 0.49994756314794503,
+      "sampled_min_clearance_m": 1.7280445165695717
+    },
+    "speed_mismatch": {
+      "position_rmse_m": 0.352122350669783,
+      "final_position_error_m": 0.5000009318672204,
+      "sampled_min_clearance_m": 1.8901152768508287
+    }
+  }
+}

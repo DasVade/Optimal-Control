@@ -1,0 +1,3 @@
+# Preserve the supplied source snapshots byte-for-byte across checkouts.
+course_sources/** -text
+*.sh text eol=lf

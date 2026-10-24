@@ -1,0 +1,32 @@
+{
+  "python": "3.12.14",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "logical_cpu_count": 24,
+  "numpy": "2.5.4",
+  "elapsed_seconds": 0.47308029999840073,
+  "base_commit": "be8f62b0499be395ca25723a789c63f385b245c6",
+  "configuration_sha256": "56aa3d492b067e27f3e23dc8cd9686c61807758aaadaf3a14aa3c198d1a6bebd",
+  "dependencies": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "pillow": "13.0.0",
+    "osqp": "1.1.3"
+  },
+  "source_sha256": {
+    "src\\control_portfolio\\acrobot.py": "0450edae36f97eb121b783719e9c53ecc4b52f95693152a06ce316e3693cc421",
+    "src\\control_portfolio\\cartpole.py": "a1e33f2d76fae5501d9151c31cb55747d347ce9b4dba4ee1e39f590f6039de34",
+    "src\\control_portfolio\\cli.py": "49601729ab3b181f33daf87098d6fb8985048dc09cd55efcedbc016e25f3b4b7",
+    "src\\control_portfolio\\ilqr.py": "9682be1308956de5efe55ec17d2fd3ea87b78f4ce59d6e737df7361ceec01cd6",
+    "src\\control_portfolio\\minsnap.py": "486dd6819953f02e40ab779f933e6a55f5436971b4d67fc93b5f9d262a1d7dae",
+    "src\\control_portfolio\\osc.py": "11af3bf343410455a58f4882457ec17cc7e4fe6d0174cadd98ffa362923aa864",
+    "src\\control_portfolio\\quadrotor.py": "5459d1cd1f905c426cb02a25acf1166135c87e379803e704a84aa73813f8bfc1",
+    "src\\control_portfolio\\robotics_experiments.py": "1f1036955e8ac044bfd04b1565700a717160d0a39d8c653fb7ab8e0172898d20",
+    "src\\control_portfolio\\simulation.py": "27a31246850c31a926778c0ed298f7b0ed1b4efe78065e3a848f15bd7230b6d5",
+    "src\\control_portfolio\\supporting.py": "a2a26c16db60087f4b59644189dd47b7b270bc1adc3eea2b92bfab5e331132c9",
+    "src\\control_portfolio\\unicycle.py": "c35939c6fc17c937f8be97f8b350c4af2ae608e699a63d8fe972a9854b558aa6",
+    "src\\control_portfolio\\__init__.py": "7fd16b42668fee94a078b932413f844ae8461af45a1dbe8167d1c7598863223b"
+  },
+  "execution": "Local CPU only; no paid jobs or hardware experiments."
+}

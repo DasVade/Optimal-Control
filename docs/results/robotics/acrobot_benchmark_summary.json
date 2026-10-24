@@ -1,0 +1,41 @@
+{
+  "task": "acrobot-benchmark",
+  "results": [
+    {
+      "name": "seed0",
+      "settings": {
+        "seed": 0,
+        "nodes": 21,
+        "dt_s": 0.175,
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "max_iterations": 250,
+        "box_width_m": 2.0
+      },
+      "metrics": {
+        "seed": 0,
+        "solver_success": false,
+        "status": "Iteration limit reached",
+        "iterations": 3,
+        "objective_Nm2s": 66.48803046212623,
+        "max_dynamics_defect": 38.52132988722772,
+        "boundary_residual": 1.2330979355880546e-15,
+        "node_and_midpoint_clearance_m": -0.4847517394895797,
+        "dense_spline_clearance_m": -0.5944428003192228,
+        "independent_clearance_m": 1.1133316409042353,
+        "independent_final_configuration_error_rad": 2.9530163780336447,
+        "independent_state_rmse": 1.9744342894523037,
+        "independent_integration_success": true,
+        "peak_input_Nm": 9.558563483746683,
+        "peak_node_velocity_rad_s": 6.391584034961378,
+        "feasible_nodes": false,
+        "validated_swingup": false,
+        "wall_seconds": 0.14519149999250658
+      }
+    }
+  ],
+  "elapsed_seconds": 0.15637499999138527
+}

@@ -1,0 +1,83 @@
+{
+  "metrics": {
+    "duration_requested_s": 10.0,
+    "duration_completed_s": 10.0,
+    "error": null,
+    "wall_seconds": 128.51178148500185,
+    "solver_evaluations": 20000,
+    "solver_failures": 1,
+    "minimum_base_height_m": 0.7804567665229977,
+    "final_base_height_m": 0.8010572007442758,
+    "final_base_pitch_rad": 0.494847753127645,
+    "forward_distance_m": 5.152662842875981,
+    "demonstrated_walking": false,
+    "note": "Execution alone does not establish stable walking; inspect duration, posture, contacts and solver failures.",
+    "peak_applied_torque_Nm": [
+      500.0000128491041,
+      500.00000637951655,
+      400.000005095962,
+      400.0000069518781
+    ],
+    "max_applied_actuator_violation_Nm": 1.284910410959128e-05,
+    "stance_velocity_rms_m_s": 0.45443128913613895,
+    "max_abs_base_pitch_rad": 0.5380685609517316,
+    "planner_stance_transitions": 49
+  },
+  "solver_status_counts": {
+    "solved": 19999,
+    "maximum iterations reached": 1
+  },
+  "solver_time_median_s": 0.005055379497207468,
+  "solver_time_p95_s": 0.007807526696706189,
+  "accepted_max_constraint_violation": 2.7079673941443616e-05,
+  "accepted_min_candidate_normal_force_N": 439.75873780288134,
+  "accepted_max_candidate_friction_violation_N": 0.0,
+  "candidate_force_note": "These are QP contact-force predictions, not measured plant contact forces.",
+  "forward_velocity_rmse_m_s": 0.10125874905959684,
+  "final_forward_velocity_m_s": 0.510492461481345,
+  "fallback_events": [
+    {
+      "status": "maximum iterations reached",
+      "success": false,
+      "constraint_violation": 1.5567344576083997e-05,
+      "time_s": 0.9995,
+      "fsm": 0,
+      "fallback": true,
+      "solve_seconds": 0.00729133599816123,
+      "applied_torque_Nm": [
+        317.4478345395055,
+        -265.1716948855248,
+        31.05339667372009,
+        -37.44301604222245
+      ],
+      "stance_position_m": [
+        0.5883685357340505,
+        0.0,
+        -0.0010638617249695281
+      ],
+      "stance_velocity_m_s": [
+        -0.0007585678921356864,
+        0.0,
+        0.000264634942175955
+      ],
+      "candidate_contact_force_N": [
+        320.8938721290557,
+        0.0,
+        1235.9032912655007
+      ]
+    }
+  ],
+  "simulation_settings": {
+    "plant_step_s": 0.0005,
+    "planner_update_s": 0.001,
+    "desired_speed_m_s": 0.5,
+    "com_height_target_m": 0.9,
+    "task_kp_planar": 100.0,
+    "task_kd_planar": 10.0,
+    "torso_kp": 1.0,
+    "torso_kd": 1.0,
+    "vdot_regularization": 1e-05,
+    "friction_coefficient": 1.0,
+    "controller_gains_changed_since_5s_run": false
+  }
+}

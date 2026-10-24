@@ -1,0 +1,48 @@
+{
+  "task": "robotics-benchmark",
+  "results": [
+    {
+      "name": "short_mpc",
+      "settings": {
+        "name": "short_mpc",
+        "method": "mpc",
+        "initial": [
+          0.5,
+          0.5,
+          0,
+          1,
+          1,
+          0
+        ],
+        "horizon": 10,
+        "r": 1.0,
+        "mass": 1.0,
+        "disturbance": 0.0,
+        "seed": null
+      },
+      "metrics": {
+        "position_rmse_m": 0.987435115758445,
+        "final_state_error": [
+          0.8044744459628687,
+          0.3267789850643516,
+          0.12978031254441466,
+          -0.7217287715776691,
+          -0.5695164799052999,
+          -0.5406919557906886
+        ],
+        "success": false,
+        "settling_time_s": null,
+        "control_effort_above_hover_N2s": 2.252956420331197,
+        "peak_input_N": 5.12530802846984,
+        "saturation_fraction": 0.0,
+        "applied_bound_violation_N": 0.0,
+        "solver_failures": 0,
+        "max_constraint_violation": 1.719287433789683e-14,
+        "solve_time_median_s": 0.00011590000940486789,
+        "solve_time_p95_s": 0.0002198050133301875,
+        "wall_seconds": 0.011080199998104945
+      }
+    }
+  ],
+  "elapsed_seconds": 0.07845870000892319
+}

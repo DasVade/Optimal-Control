@@ -1,0 +1,60 @@
+{
+  "duration_s": 20.0,
+  "dt_s": 0.01,
+  "nominal_parameters": {
+    "mc": 1.0,
+    "mp": 1.0,
+    "length": 1.0,
+    "gravity": 9.81
+  },
+  "q_diagonal": [
+    1.0,
+    1.0,
+    1.0,
+    10.0
+  ],
+  "r_values": [
+    0.1,
+    1.0,
+    10.0
+  ],
+  "near_upright_initial_conditions": [
+    [
+      0.1,
+      0.1,
+      0.0,
+      0.0
+    ],
+    [
+      0.25,
+      0.25,
+      0.0,
+      0.0
+    ]
+  ],
+  "angle_offsets_note": "Initial condition second entry is offset from pi in radians, converted before simulation.",
+  "force_limits_N": [
+    2.0,
+    10.0,
+    180.0
+  ],
+  "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+  ],
+  "disturbance_note": "One seeded constant force pulse on [5,6) seconds, uniform [-2,2] N; same seed across controller variants.",
+  "settling_definition": "Earliest logged time with |cart|<=0.05 m, |wrapped angle-pi|<=0.05 rad, |cart velocity|<=0.1 m/s, |angular velocity|<=0.1 rad/s and all later samples also within; at least 1 second must remain.",
+  "cart_diagnostic_bound_m": 2.0,
+  "integration": "Fixed-step RK4; continuous feedback recomputed at four RK stages. No sampled-data discretization or zero-order hold.",
+  "unicycle": {
+    "duration_s": 10.0,
+    "integration_max_step_s": 0.005,
+    "rtol": 1e-08,
+    "atol": 1e-10,
+    "heading_offset_rad": 0.05,
+    "speed_scale_mismatch": 1.05
+  }
+}

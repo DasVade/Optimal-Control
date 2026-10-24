@@ -1,0 +1,40 @@
+{
+  "source": "course_sources/hw4_completed/minsnap.py",
+  "waypoints": [
+    [
+      -3.0,
+      -4.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      2.0,
+      3.0
+    ],
+    [
+      4.0,
+      0.0
+    ],
+    [
+      8.0,
+      -4.0
+    ]
+  ],
+  "durations_s": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "terms": 14,
+  "execution_completed": true,
+  "original_solver_stdout": "SolutionResult.kSolutionFound\n",
+  "original_waypoint_residual": 1.4185692620571899e-08,
+  "original_continuity_residual_one_sided": 3.368473998113733e-08,
+  "original_snap_integral": 210.69536460304678,
+  "scaled_snap_integral": 210.69536423836269,
+  "max_position_difference_m": 1.4185683738787702e-08,
+  "note": "Baseline solver status, residuals and conditioning must be interpreted together; execution is not automatically numerical validation."
+}

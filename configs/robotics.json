@@ -1,0 +1,36 @@
+{
+  "quadrotor": {
+    "duration_s": 10.0,
+    "control_dt_s": 0.02,
+    "integration_dt_s": 0.005,
+    "prediction_dt_s": 0.1,
+    "horizon_states": [5, 10, 20],
+    "initial_states": [[0.1,0.1,0,0,0,0],[0.5,0.5,0,1,1,0],[0,0,0.4,0,0,0]],
+    "r_scales": [0.1,1.0,10.0],
+    "seeds": [0,1,2],
+    "disturbance_range_N": [-1.0,1.0],
+    "mismatch_mass_kg": 1.1
+  },
+  "minsnap": {
+    "waypoints": [[-3,-4],[0,0],[2,3],[4,0],[8,-4]],
+    "duration_scales": [0.5,1.0,2.0],
+    "terms": 14
+  },
+  "ilqr": {
+    "initial_state": [0,0,0,0,0,0,0,0],
+    "goal_state": [-0.5,1.5,0,3.141592653589793,0,0,0,0],
+    "dt_s": 0.02,
+    "horizon_states": 200,
+    "max_iterations": 120,
+    "tolerance": 0.00001,
+    "seeds": [0,1,2],
+    "initial_input_noise_std_N": 0.5
+  },
+  "acrobot": {
+    "nodes": 21,
+    "dt_s": 0.175,
+    "seeds": [0,1,2],
+    "max_iterations": 250,
+    "box_width_m": 2.0
+  }
+}

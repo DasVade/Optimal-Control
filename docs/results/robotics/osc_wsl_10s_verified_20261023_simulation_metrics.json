@@ -1,0 +1,24 @@
+{
+  "duration_requested_s": 10.0,
+  "duration_completed_s": 10.0,
+  "error": null,
+  "wall_seconds": 128.51178148500185,
+  "solver_evaluations": 20000,
+  "solver_failures": 1,
+  "minimum_base_height_m": 0.7804567665229977,
+  "final_base_height_m": 0.8010572007442758,
+  "final_base_pitch_rad": 0.494847753127645,
+  "forward_distance_m": 5.152662842875981,
+  "demonstrated_walking": false,
+  "note": "Execution alone does not establish stable walking; inspect duration, posture, contacts and solver failures.",
+  "peak_applied_torque_Nm": [
+    500.0000128491041,
+    500.00000637951655,
+    400.000005095962,
+    400.0000069518781
+  ],
+  "max_applied_actuator_violation_Nm": 1.284910410959128e-05,
+  "stance_velocity_rms_m_s": 0.45443128913613895,
+  "max_abs_base_pitch_rad": 0.5380685609517316,
+  "planner_stance_transitions": 49
+}

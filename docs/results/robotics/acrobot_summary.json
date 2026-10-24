@@ -1,0 +1,111 @@
+{
+  "task": "acrobot",
+  "results": [
+    {
+      "name": "seed0",
+      "settings": {
+        "seed": 0,
+        "nodes": 21,
+        "dt_s": 0.175,
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "max_iterations": 250,
+        "box_width_m": 2.0
+      },
+      "metrics": {
+        "seed": 0,
+        "solver_success": false,
+        "status": "Iteration limit reached",
+        "iterations": 250,
+        "objective_Nm2s": 271.0004816662144,
+        "max_dynamics_defect": 39.05117825508426,
+        "boundary_residual": 1.3322676295501878e-15,
+        "node_and_midpoint_clearance_m": -0.45901361126215257,
+        "dense_spline_clearance_m": -0.5959207737057316,
+        "independent_clearance_m": 0.29156405526235574,
+        "independent_final_configuration_error_rad": 4.406254021035576,
+        "independent_state_rmse": 2.916160741427291,
+        "independent_integration_success": true,
+        "peak_input_Nm": 22.289974817575043,
+        "peak_node_velocity_rad_s": 9.05329946005191,
+        "feasible_nodes": false,
+        "validated_swingup": false,
+        "wall_seconds": 5.362959799997043
+      }
+    },
+    {
+      "name": "seed1",
+      "settings": {
+        "seed": 1,
+        "nodes": 21,
+        "dt_s": 0.175,
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "max_iterations": 250,
+        "box_width_m": 2.0
+      },
+      "metrics": {
+        "seed": 1,
+        "solver_success": false,
+        "status": "Positive directional derivative for linesearch",
+        "iterations": 22,
+        "objective_Nm2s": 23.47733704608462,
+        "max_dynamics_defect": 20.4069266518593,
+        "boundary_residual": 3.5552349154136505e-16,
+        "node_and_midpoint_clearance_m": -0.4852300373088012,
+        "dense_spline_clearance_m": -0.5985816498680177,
+        "independent_clearance_m": 1.2230968272628882,
+        "independent_final_configuration_error_rad": 2.9148175857702427,
+        "independent_state_rmse": 1.7152220406564311,
+        "independent_integration_success": true,
+        "peak_input_Nm": 6.524314419945035,
+        "peak_node_velocity_rad_s": 1.9707224351523207,
+        "feasible_nodes": false,
+        "validated_swingup": false,
+        "wall_seconds": 0.4617766000155825
+      }
+    },
+    {
+      "name": "seed2",
+      "settings": {
+        "seed": 2,
+        "nodes": 21,
+        "dt_s": 0.175,
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "max_iterations": 250,
+        "box_width_m": 2.0
+      },
+      "metrics": {
+        "seed": 2,
+        "solver_success": false,
+        "status": "Positive directional derivative for linesearch",
+        "iterations": 40,
+        "objective_Nm2s": 44.176237653474345,
+        "max_dynamics_defect": 34.65839426682328,
+        "boundary_residual": 1.8213700404244398e-15,
+        "node_and_midpoint_clearance_m": -0.3914729596861093,
+        "dense_spline_clearance_m": -0.595985313970741,
+        "independent_clearance_m": 1.0633307277938215,
+        "independent_final_configuration_error_rad": 3.59768415468202,
+        "independent_state_rmse": 1.9650775798041016,
+        "independent_integration_success": true,
+        "peak_input_Nm": 10.726910055576532,
+        "peak_node_velocity_rad_s": 3.087295080225541,
+        "feasible_nodes": false,
+        "validated_swingup": false,
+        "wall_seconds": 0.8443514000100549
+      }
+    }
+  ],
+  "elapsed_seconds": 6.71831949998159
+}

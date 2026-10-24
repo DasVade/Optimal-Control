@@ -1,0 +1,33 @@
+{
+  "task": "supporting",
+  "results": [
+    {
+      "gamma": 0.9,
+      "bellman_residual": 3.1111113685255987e-10
+    },
+    {
+      "gamma": 0.1,
+      "bellman_residual": 1.000000082740371e-09
+    },
+    {
+      "module": "HW1",
+      "equilibria": [
+        [
+          -1.0,
+          2.0
+        ],
+        [
+          0.7320508075688772,
+          2.0
+        ],
+        [
+          -2.732050807568877,
+          2.0
+        ]
+      ],
+      "equilibrium_residual": 2.220446049250313e-16,
+      "note": "Original comment has a cubic algebra typo; returned equilibria satisfy the actual dynamics."
+    }
+  ],
+  "elapsed_seconds": 6.108657299977494
+}

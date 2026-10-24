@@ -1,0 +1,72 @@
+{
+  "task": "minsnap",
+  "results": [
+    {
+      "name": "duration0.5",
+      "settings": {
+        "duration_scale": 0.5,
+        "terms": 14,
+        "endpoint_derivatives": "free"
+      },
+      "metrics": {
+        "snap_integral": 26969.00662251027,
+        "waypoint_residual": 1.0658141036401503e-14,
+        "continuity_residual": 1.11939435498698e-09,
+        "reduced_rank": 36,
+        "reduced_condition": 2821984.8528652894,
+        "projected_gradient_norm": 1.7973130599756898e-06,
+        "status": "equality-nullspace least squares",
+        "endpoint_derivatives": "unconstrained",
+        "peak_derivative1": 11.930963721547673,
+        "peak_derivative2": 39.96948709567108,
+        "peak_derivative3": 85.88798479534867,
+        "peak_derivative4": 223.62637144906768
+      }
+    },
+    {
+      "name": "duration1.0",
+      "settings": {
+        "duration_scale": 1.0,
+        "terms": 14,
+        "endpoint_derivatives": "free"
+      },
+      "metrics": {
+        "snap_integral": 210.69536423836075,
+        "waypoint_residual": 1.1175088632242591e-14,
+        "continuity_residual": 6.905176430649362e-11,
+        "reduced_rank": 36,
+        "reduced_condition": 2821984.8528902316,
+        "projected_gradient_norm": 1.3918788845009547e-08,
+        "status": "equality-nullspace least squares",
+        "endpoint_derivatives": "unconstrained",
+        "peak_derivative1": 5.9654818607738465,
+        "peak_derivative2": 9.992371773917812,
+        "peak_derivative3": 10.735998099419099,
+        "peak_derivative4": 13.97664821554869
+      }
+    },
+    {
+      "name": "duration2.0",
+      "settings": {
+        "duration_scale": 2.0,
+        "terms": 14,
+        "endpoint_derivatives": "free"
+      },
+      "metrics": {
+        "snap_integral": 1.6460575331121992,
+        "waypoint_residual": 1.0658141036401503e-14,
+        "continuity_residual": 4.372634199167891e-12,
+        "reduced_rank": 36,
+        "reduced_condition": 2821984.8528652894,
+        "projected_gradient_norm": 1.0969928344578185e-10,
+        "status": "equality-nullspace least squares",
+        "endpoint_derivatives": "unconstrained",
+        "peak_derivative1": 2.9827409303869183,
+        "peak_derivative2": 2.4980929434794423,
+        "peak_derivative3": 1.341999762427323,
+        "peak_derivative4": 0.8735405134729206
+      }
+    }
+  ],
+  "elapsed_seconds": 0.17302369998651557
+}
