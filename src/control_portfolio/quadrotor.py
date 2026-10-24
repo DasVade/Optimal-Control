@@ -37,6 +37,9 @@ class Controller:
         self.ad=np.eye(6)+prediction_dt*a; self.bd=prediction_dt*b
         if method=='lqr':return
         # x[0:N], ue[0:N-1]. Qf=Q, as supplied assignment notebook.
+        # Intentionally a discrete sum with no prediction_dt stage multiplier.
+        # It is not a finite-horizon quadrature of CARE's continuous objective;
+        # multiplying the ENTIRE sum by T maps its terminal matrix to T*Q.
         n=horizon; nx=6*n; nv=nx+2*(n-1)
         p=sparse.block_diag([self.q]*n+[self.r]*(n-1),format='csc')*2
         eq=sparse.lil_matrix((6*n,nv)); eq[:6,:6]=np.eye(6)
@@ -101,6 +104,8 @@ def simulate(controller, initial, duration=10., control_dt=.02, integration_dt=.
     metrics=dict(position_rmse_m=float(np.sqrt(np.mean(np.sum(xx[:,:2]**2,axis=1)))),
         final_state_error=xx[-1].tolist(),success=bool(good[-1]),
         settling_time_s=float(t[settled[0]]) if len(settled) else None,
+        # Legacy key retained; display name: "Control effort relative to hover".
+        # Both signs of deviation contribute, using held APPLIED thrust.
         control_effort_above_hover_N2s=float(np.sum((applied-4.905)**2)*control_dt),
         peak_input_N=float(applied.max()),saturation_fraction=float(np.mean((applied<=1e-7)|(applied>=5.5-1e-7))),
         applied_bound_violation_N=float(max(-applied.min(),applied.max()-5.5,0.)),

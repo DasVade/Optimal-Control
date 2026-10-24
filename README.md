@@ -1,6 +1,6 @@
 # Robotic Motion Planning and Optimal Control
 
-Reproducible robotics simulations exploring actuator limits, prediction horizons, trajectory smoothness and nonlinear optimization failures. Built from Penn MEAM 5170 coursework, with audited models, new solver completions and controlled experiments. Python, NumPy, SciPy and OSQP; local CPU execution.
+Reproducible planar quadrotor hover control and minimum-snap waypoint planning, exploring actuator limits, prediction horizons and trajectory duration. Built from Penn MEAM 5170 coursework, with audited models, new solver completions and controlled experiments. Python, NumPy, SciPy and OSQP; local CPU execution.
 
 <img src="docs/figures/robotics/quadrotor_comparison.png" width="850" alt="Matched nonlinear quadrotor LQR and MPC simulations with horizon, error, pitch and effort comparisons">
 
@@ -8,21 +8,21 @@ Reproducible robotics simulations exploring actuator limits, prediction horizons
 
 - **Planar quadrotor:** continuous LQR with actuator clipping versus input-constrained linear MPC on the same nonlinear plant; horizon, cost-weight, disturbance and mass-mismatch studies.
 - **Minimum-snap planning:** waypoint interpolation with C4 continuity, a scaled numerical solver, constraint residuals and duration-scaling experiments.
-- **Underactuated examples:** preserved cart-pole energy shaping/LQR and unicycle flatness planning; new quadrotor-pendulum iLQR and Acrobot collocation experiments with unsuccessful/physically infeasible outcomes explicitly reported.
-- **Supporting coursework:** reproduced phase portraits and GridWorld value iteration. A [persistent WSL Drake setup](docs/WSL_SETUP.md) now runs the biped OSC adapter with the supplied model/planner; stable walking remains unverified.
 
 ## Representative results
 
 Quadrotor: initial `[0.5,0.5,0,1,1,0]`, 10 s nonlinear simulation, both motors limited to 0-5.5 N. MPC uses .1 s prediction spacing and .02 s control updates. N counts **states**; N=10 has nine input steps. All configurations and unsuccessful trials are retained in the [technical report](docs/ROBOTICS_REPORT.md).
 
-| Method | Position RMSE (m) | Full-state settling (s) | Above-hover effort (N² s) |
+| Method | Position RMSE (m) | Full-state settling (s) | Control effort relative to hover (N² s) |
 |---|---:|---:|---:|
 | Clipped LQR | 0.2873 | 2.68 | 3.8730 |
 | MPC, N=5 | 0.7994 | not settled | 0.8692 |
 | MPC, N=10 | 0.3501 | 3.26 | 2.4021 |
 | MPC, N=20 | 0.3257 | 2.62 | 2.8863 |
 
-MPC N=10 uses 38% less above-hover effort here, at higher position error and slower settling. Short horizons, aggressive clipped LQR and mass mismatch expose failures; this is not a universal robustness claim. Settling requires all position, angle and velocity errors to remain inside the report's explicit tolerances through the end of the run.
+MPC N=10 uses **37.98% less control effort relative to hover**, with **21.87% higher position RMSE** and slower settling in this case. Effort is `integral ||u_applied(t) - [4.905,4.905]||² dt`, including thrust deviations in either direction. Both controllers share the nonlinear plant, integration and actuator limits; continuous infinite-horizon LQR and finite-horizon discrete MPC have different objective conventions and terminal treatment. These are configuration-specific behavior comparisons, not an isolated causal benefit of MPC. [Cost-convention audit](docs/ROBOTICS_REPORT.md#cost-conventions-and-comparability).
+
+Short horizons, aggressive clipped LQR and mass mismatch expose failures. Settling requires all position, angle and velocity errors to remain inside the report's explicit tolerances through the end of the run.
 
 <img src="docs/figures/robotics/minimum_snap.png" width="850" alt="Minimum-snap waypoint paths and speed/snap profiles under duration scaling">
 
@@ -43,6 +43,8 @@ python -m venv .venv
 ```
 
 Choose a fresh output folder for each run. JSON configs, numerical CSV/NPZ traces, solver logs and environment details are exported automatically. [Full reproduction instructions](docs/REPRODUCTION.md) include iLQR, Acrobot, supporting examples, the existing HW3 suite and rebuilding the figures.
+
+Secondary modules retain cart-pole/unicycle results and GridWorld examples. iLQR approaches its numerical goal but hits iteration limits and requests negative thrust; Acrobot optimization returns constraint-violating candidates, leaving task feasibility unresolved. The [WSL OSC adapter](docs/WSL_SETUP.md) executes a ten-second biped simulation with logged limitations; robust walking is unverified. Details remain in the technical report.
 
 ## Coursework and contributions
 

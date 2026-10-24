@@ -11,9 +11,9 @@ October 23, 2026. This extends the preserved [HW3 report](TECHNICAL_REPORT.md). 
 | Quadrotor LQR/MPC | Hover LQR exists; MPC helpers empty; faulty simulation callback | Sparse bounded error-input MPC, corrected held-input nonlinear integration, full-state criteria, solver/fallback logs | Mathematical and behavioral checks; nominal, horizon, weights, disturbance and mismatch experiments demonstrated |
 | Minimum snap | Completed alternative and unfinished template both supplied | Scaled equality-nullspace solver of the same objective | Waypoints, C4 continuity, stationarity and duration scaling checked; trajectory demonstrated |
 | Cart-pole / unicycle | Completed student regions in original HW3 | Prior audit/corrections and reproducible package at ae7498a | Existing verified experiments and figures preserved unchanged |
-| Quadrotor-pendulum iLQR | Dynamics/cost scaffolding; solver passes empty | Discrete RK4 derivatives, backward pass, line search and regularization | Goal approach demonstrated numerically; iteration limit and open-loop integration sensitivity remain; physically infeasible negative thrust |
-| Acrobot | Drake model/dynamics wrapper; constraints/optimization empty | URDF-parameterized dynamics, Hermite-Simpson, bounds and end-effector obstacles | Equilibrium/energy/defect checks pass; all nonlinear optimization trials infeasible; no swing-up demonstration |
-| Biped OSC | Model and supplied planner present; incomplete controller with syntax error | Portable acceleration QP core with correct force signs, contact/friction/input constraints | Static matrix test only. Multibody Jacobians and walking not executed; blocked by Drake environment |
+| Quadrotor-pendulum iLQR | Dynamics/cost scaffolding; solver passes empty | Discrete RK4 derivatives, backward pass, line search and regularization | Numerical goal approach; iteration limit, open-loop integration sensitivity and negative thrust remain |
+| Acrobot | Drake model/dynamics wrapper; constraints/optimization empty | URDF-parameterized dynamics, Hermite-Simpson, bounds and end-effector obstacles | Model checks pass; all returned optimization candidates violate constraints; task feasibility unresolved |
+| Biped OSC | Model and supplied planner present; incomplete controller with syntax error | Acceleration QP plus new headless Drake adapter | Multibody checks and ten-second simulation executed in persistent WSL; robust walking remains unverified |
 | HW1 / HW2 support | Completed portrait and GridWorld; incomplete-dependency TVLQR | Headless adapters and residual checks | Portrait and discounted policies reproduced; original TVLQR not demonstrated |
 
 ## Shared experiment discipline
@@ -34,20 +34,37 @@ The assignment's forward Euler predictor is `Ad=I+A*T, Bd=B*T`. Prediction T=.1 
 
 OSQP uses absolute/relative tolerances 1e-6, max 10000 iterations, warm starts and polishing. A solve is accepted only with status `solved` and explicit maximum linear-constraint violation <1e-4. Otherwise an event is logged and clipped LQR is the fallback. The forced one-iteration failure test exercises this branch; there were zero solver failures in the reported sweep. Tiny final clipping protects physical motor bounds and is separately observable in commanded/applied traces. No CLF controller or flag is exposed.
 
-The original callback evaluated derivatives at fixed `current_x`; this implementation evaluates every RK4 substage at its evolving state. It always simulates the full 10 s, avoiding a position-only early stop. Success at the final sample requires componentwise absolute errors below `[.02,.02,.02,.05,.05,.05]` in the state units. Settling is the first sampled time after which **all six** remain within these tolerances through the end. A null settling time is failure to settle over this finite duration, not proof of infinite-time instability. Position RMSE is `sqrt(mean(y^2+z^2))`, including the initial sample; effort is integral of squared **applied input above nominal hover**. Saturation fraction counts individual motor-time samples at either bound, not just clipped controller calls.
+The original callback evaluated derivatives at fixed `current_x`; this implementation evaluates every RK4 substage at its evolving state. It always simulates the full 10 s, avoiding a position-only early stop. Success at the final sample requires componentwise absolute errors below `[.02,.02,.02,.05,.05,.05]` in the state units. Settling is the first sampled time after which **all six** remain within these tolerances through the end. A null settling time is failure to settle over this finite duration, not proof of infinite-time instability. Position RMSE is `sqrt(mean(y^2+z^2))`, including the initial sample; control effort relative to hover integrates the squared **applied-input deviation from nominal hover**. Saturation fraction counts individual motor-time samples at either bound, not just clipped controller calls.
+
+### Cost conventions and comparability
+
+| Controller | State/input weights | Terminal cost | Prediction/model convention | Control update |
+|---|---|---|---|---|
+| Clipped LQR | Continuous `Qc=diag(10,10,1,1,1,1)`, `Rc=r I2` | No finite terminal cost; CARE value matrix `S` for the unconstrained infinite-horizon design | Continuous hover-linearized A/B; no prediction timestep | .02 s held inputs |
+| MPC N=5/10/20 | Discrete `Qd=diag(10,10,1,1,1,1)`, `Rd=r I2`; stage sum has **no T factor** | `Pd=Qd` at state N-1; not CARE S | Euler `Ad=I+.1 A`, `Bd=.1 B`; T=.1 s; N-1 actions | .02 s held inputs |
+
+The representative comparison uses r=1. Matched weight trials use r=.1,1,10 for both controllers. MPC counts the initial state stage cost (constant for a given solve), N-2 subsequent stage costs, and one terminal state cost. No half-factor ambiguity exists: OSQP uses `.5*z'P*z` with block Hessians `2Qd,2Rd`, producing exactly the stated sum.
+
+LQR minimizes the continuous infinite-horizon integral of `x'Qc x+ue'Rc ue` for the linear unconstrained model. MPC minimizes an unscaled discrete finite sum plus `x_terminal'Qd x_terminal`. These are **not objective-equivalent designs**. Multiplying MPC's entire objective by T=.1 leaves its optimizer unchanged and yields `T sum(stage) + x_terminal'(T Qd)x_terminal`. Thus its rectangle-rule continuous interpretation uses terminal matrix **.1 Q**, not Q and not CARE S. If a finite-horizon continuous terminal Q had been intended, consistent rectangle scaling would require `T Q,T R,Q`, equivalently unscaled `Q,R,Q/T`; that is a different experiment and was not substituted. Stage Q/R ratios agree numerically, but terminal treatment, finite horizon, Euler prediction, sampling, constraints and clipping differ. LQR's continuous optimality also does not extend to its clipped nonlinear sampled implementation.
+
+This is a matched-plant comparison of explicitly documented controller configurations, not an isolated test of constraint handling or proof MPC is superior. Within the MPC horizon sweep, prediction spacing, Q/R, terminal Q, controller update and plant remain fixed, so changing N is controlled. Prediction timestep itself was not swept. No weights or terminal costs were retuned during this review.
+
+Both methods use the same `simulate` implementation: the same six-state nonlinear plant, nominal mass/inertia/arm/gravity, RK4 .005 s, .02 s held controller period, initial condition, clipping to [0,5.5] N, and full 10 s duration. The saved traces confirm matching initial states, update grids and duration. Six fixed-seed disturbance/mismatch pairs match force realization, mass and initial condition; force application uses the same [2,2.5) s interval. Neither method gets a different disturbance draw. The audit recomputes effort and RMSE from all saved quadrotor traces and verifies the paired settings. See [technical_review.json](results/robotics/technical_review.json) and `scripts/review_main_results.py`.
+
+**Control effort relative to hover** is `E=integral_0^10 ||u_applied(t)-[4.905,4.905]||_2^2 dt` in N^2 s. Because applied inputs are held, `E=sum_k .02 * ||u_applied[k]-u_hover||^2` exactly integrates that input trace. Deviations below and above hover both contribute; raw controller commands are not used. The historical JSON key `control_effort_above_hover_N2s` is retained for compatibility and denotes this same metric; no old values are rewritten.
 
 ### Measured nominal comparison
 
 Initial `[.5,.5,0,1,1,0]`, identical 10 s plant and motor limits:
 
-| Controller | Position RMSE (m) | Settling (s) | Effort (N^2 s) | Peak thrust (N) | Saturation fraction | Median / p95 solve (ms) |
+| Controller | Position RMSE (m) | Settling (s) | Control effort relative to hover (N^2 s) | Peak thrust (N) | Saturation fraction | Median / p95 solve (ms) |
 |---|---:|---:|---:|---:|---:|---:|
 | Clipped LQR | .2873 | 2.68 | 3.8730 | 5.5000 | .015 | .0015 / .0043 |
 | MPC N=5 | .7994 | not settled | .8692 | 5.0740 | 0 | .0712 / .1097 |
 | MPC N=10 | .3501 | 3.26 | 2.4021 | 5.2913 | 0 | .1064 / .1608 |
 | MPC N=20 | .3257 | 2.62 | 2.8863 | 5.3156 | 0 | .1514 / .2519 |
 
-MPC N=10 spends 38.0% less above-hover effort than clipped LQR in this case, while having higher position RMSE and slower settling. A longer MPC horizon improves this case's error at additional computation/effort. It is not universally superior. All three nominal initial conditions settle under LQR and N=10/20; N=5 fails two. See [comparison figure](figures/robotics/quadrotor_comparison.png) and [actual simulation GIF](figures/robotics/quadrotor.gif).
+From the saved applied-input traces, LQR effort is 3.872962685247318 N^2 s and MPC N=10 effort is 2.4020890610572736 N^2 s: `100*(1-E_MPC/E_LQR)=37.977996%` reduction. Position RMSE is .2873030749767701 versus .350134758210639 m: `100*(RMSE_MPC/RMSE_LQR-1)=21.869478%` increase. Both rounded claims (38% lower effort, approximately 22% higher position RMSE) remain valid for this configuration, with slower MPC settling. A longer MPC horizon improves this case's error at additional computation/effort. It is not universally superior. All three nominal initial conditions settle under LQR and N=10/20; N=5 fails two. See [comparison figure](figures/robotics/quadrotor_comparison.png) and [actual simulation GIF](figures/robotics/quadrotor.gif).
 
 ### Weights, disturbances, mismatch and failures
 
@@ -71,6 +88,18 @@ Minimize `sum integral ||d^4 gamma/dt^4||^2 dt`. Row-normalized equalities yield
 
 Residual derivative rows have their corresponding physical derivative units; the maximum is a numerical diagnostic, not a dimensionless physical error score. Peaks are sampled on 1001 times, not certified continuous maxima. Uniformly doubling duration reduces integrated squared snap by 128x, speed by 2x and acceleration by 4x, matching time-scaling identities. [Figure](figures/robotics/minimum_snap.png). This is flat-output planning only: thrust/tilt feasibility, obstacle avoidance and nonlinear quadrotor tracking are not demonstrated for these paths.
 
+### Free-endpoint nullspace and independent objective audit
+
+Free endpoint derivatives do not by themselves guarantee positive snap. Zero integrated squared snap requires every segment to be cubic or lower; C1-C3 continuity then makes these one global cubic in physical time. For the current five waypoints at t=0,1,2,3,4, the fourth finite differences are **1 in y and 10 in z**, rather than zero. The global cubic Vandermonde matrix has rank 4; augmenting it with the waypoint data raises rank to 5. No global cubic interpolates these data. The maximum waypoint residual of the least-squares global cubic is .85714 m; it is not a feasible zero-cost path. Uniformly scaling all times does not change this compatibility conclusion.
+
+An independent coefficient-derivative construction checks the full QP per coordinate: 56 coefficients, 20 equality rows of rank 20, equality nullity 36. The fourth-derivative operator has rank 40 and a 16-dimensional kernel (four cubic coefficients on each of four segments). Restricting the equalities to this objective kernel gives rank 16, while augmenting with the right-hand sides raises rank to 17: no feasible zero-snap coefficients exist. On the 36-dimensional homogeneous equality nullspace, the snap operator has full column rank 36. Thus the quadratic curvature is strictly positive on every nonzero homogeneous feasible direction and the constrained minimizer is unique for this case. This rules out an unnoticed feasible zero-cost cubic; the nonzero reported objective was not used as the proof. Rank calculations use SVD tolerances on row-normalized equalities and the exact polynomial derivative map; raw high-degree monomials can still be ill-conditioned.
+
+As a complementary regression check, five waypoints generated by a global cubic **do** produce near-zero snap under the same free-endpoint solver (test threshold 1e-15). No endpoint velocity/acceleration/jerk conditions were added to obtain the reported nonzero result.
+
+The audit converts saved ascending normalized coefficients to descending physical local-time coefficients via `c_physical[j]=c_tau[j]/T^j`, constructs a separate SciPy PPoly, differentiates it four times, and integrates squared snap using adaptive quadrature on each segment. This does not reuse the solver's weighted Gauss sample matrix or `basis` evaluator. It obtains **210.6953642383607** for four 1 s segments, versus saved 210.69536423836075, with quadrature error estimate 2.34e-12. The .5 s and 2 s cases independently integrate to 26969.006622510267 and 1.646057533112199. These are corroborating checks, not replacements for the original metrics.
+
+At the same normalized global-time samples, the three saved paths agree within 7.11e-15 m. Doubling segment/total duration gives objective ratio **.007812500000000028**, matching `2^(-7)=1/128`. Physically, four time derivatives contribute T^(-8) to squared snap and integration contributes T, hence T^(-7). Waypoint and derivative-continuity residuals are independently reconstructed and recorded in [technical_review.json](results/robotics/technical_review.json). Free endpoints and absence of thrust/obstacle constraints remain limitations of the demonstrated planner.
+
 ## C. Preserved HW3 and supporting examples
 
 Cart-pole energy shaping, corrected upright linearization, angle wrapping and LQR/hybrid saturation comparisons remain documented in [the original detailed report](TECHNICAL_REPORT.md), with its existing raw metrics and GIF. The unicycle remains a heuristic obstacle-dependent spline with feedforward flatness inversion, not a generic optimal planner or robust feedback tracker. No historical metrics were replaced by new ones.
@@ -91,7 +120,7 @@ N=200 states (3.98 s), initial zero, goal `[-.5,1.5,0,pi,0,0,0,0]`. Seed 0 start
 | 1 | 2278.7740 | 16.3469 | .002698 | -3.961 / 30.357 | iteration limit |
 | 2 | 134089.5559 | 16.2418 | .002679 | -4.157 / 31.183 | iteration limit |
 
-Accepted costs decrease, and discrete rollouts approach the goal, but convergence is **not** established. Independent open-loop replay using two .01 s RK4 steps per saved action produces final pendulum-rate differences .092-.116 rad/s and angle differences .028-.035 rad. Inverted open-loop dynamics amplify integration error; derivative correctness alone does not make this a reliable physical transfer. Negative thrust and large peak inputs are further feasibility failures. The report therefore claims numerical goal approach only, not successful constrained flight, robust tracking or global optimality. [Costs, angles and actual inputs](figures/robotics/ilqr.png).
+Accepted costs decrease, and discrete rollouts approach the goal, but convergence is **not** established. Independent open-loop replay using two .01 s RK4 steps per saved action produces final pendulum-rate differences .092-.116 rad/s and angle differences .028-.035 rad. Inverted open-loop dynamics amplify integration error; derivative correctness alone does not make this a reliable physical transfer. Negative thrust violates a conventional nonnegative-thrust rotor assumption, which was not imposed in this unconstrained optimizer. Large peak inputs are reported without inventing an unmodeled hardware maximum. These observations invalidate direct execution of these particular inputs on nonnegative-thrust motors; they do not prove the target task physically infeasible. The report claims numerical goal approach only, not successful constrained flight, robust tracking or global optimality. [Costs, angles and actual inputs](figures/robotics/ilqr.png).
 
 ## E. Constrained Acrobot: completed formulation, unsuccessful solves
 
@@ -104,7 +133,7 @@ G  = 9.81 [3.5 sin(q0)+2.5 sin(q0+q1), 2.5 sin(q0+q1)]
 M qdd = [0,u] - Cv - G
 ```
 
-Equilibrium and energy-power checks verify zero-input conservation and `dE/dt=u*v1`. Drake cross-validation is unavailable, so the portable derivation is not described as an executed Drake model.
+Equilibrium and energy-power checks verify zero-input conservation and `dE/dt=u*v1`. The original Windows run lacked Drake cross-validation; the subsequent persistent WSL environment now independently verifies this portable dynamics function against the supplied URDF at fixed-seed states and torques. That model check does not change the unsuccessful optimization results.
 
 Hermite-Simpson defects use the handout midpoint state `.5*(xi+xi1)+h/8*(fi-fi1)` and midpoint derivative `1.5/h*(xi1-xi)-.25*(fi+fi1)`, with first-order-hold midpoint input. Initial state fixed zero; final **configuration only** `[pi,0]`, terminal velocities free. Node q bounds +/-pi, velocity +/-15 rad/s, torque +/-30 Nm. Objective is trapezoidal integral of u squared. Final fixed velocity or rest-to-rest claims would be false.
 
@@ -112,7 +141,26 @@ Box centers are (+/-1.5,0), width 2 m, height 1 m; the tip ball radius is .1 m. 
 
 The new development mesh is 21 nodes at .175 s (3.5 s total), versus source 11 at .35 s. SLSQP uses ftol 1e-8. Seeds 0/1/2 perturb the state/torque guesses; a linear-angle initialization gets 250 iterations, and a folded-elbow initialization gets 600. All six runs fail feasibility. For linear seed 0 the max defect is 39.05, dense spline clearance -0.596 m, independent final configuration error 4.406 rad; folded seed 0 still has defect 50.09, clearance -0.595 m and replay error 2.889 rad. These paths cannot be presented as optimized swing-up results. Some replays avoid obstacles simply because they never swing up. [Failed candidates versus independent replay](figures/robotics/acrobot_failures.png) and all unsuccessful statuses remain in the summaries. A future sparse derivative-aware NLP, continuation or mesh refinement is a possible investigation, not a completed feature.
 
-## F. Biped OSC: exact blocker and boundaries
+### Failure classifications and Acrobot trial audit
+
+**Solver termination failure** means an optimizer did not report success (iteration limit, line-search failure, or QP failure). **Target nonattainment** means a trajectory or independent rollout misses its stated terminal/success criterion. **Constraint violation** refers to a specific returned candidate's measured defects, bounds or clearance. None of these alone proves **task-level physical infeasibility**, which would require an independent reachability argument or certificate. No such certificate exists for the Acrobot task. Its failed candidates are infeasible points of the transcription, not evidence that every possible motion is impossible.
+
+| Acrobot initialization / seed | Solver status | Max dynamics defect | Dense spline clearance (m) | Independent final q error (rad) | Independent clearance (m) |
+|---|---|---:|---:|---:|---:|
+| Linear / 0 | Iteration limit reached | 39.051 | -.596 | 4.406 | .292 |
+| Linear / 1 | Positive directional derivative for linesearch | 20.407 | -.599 | 2.915 | 1.223 |
+| Linear / 2 | Positive directional derivative for linesearch | 34.658 | -.596 | 3.598 | 1.063 |
+| Folded / 0 | Positive directional derivative for linesearch | 50.088 | -.595 | 2.889 | .041 |
+| Folded / 1 | Positive directional derivative for linesearch | 33.051 | -.598 | 4.194 | -.403 |
+| Folded / 2 | Positive directional derivative for linesearch | 30.193 | -.593 | 3.048 | .404 |
+
+Boundary equalities alone have residuals below 6e-15; their satisfaction does not compensate for these dynamics/obstacle violations. Negative clearance means the ball intersects a box. Independent rollouts integrate the optimized first-order-hold torque, not the collocation spline; all miss the target, and folded seed 1 also violates sampled obstacle clearance. Other replays have positive clearance while failing to swing up. Full metrics retain node/midpoint clearance, integration success and state discrepancies. Task feasibility is unresolved, and no successful swing-up claim is made.
+
+For the quadrotor sweep, QPs report no solver failure even in cases failing the final full-state criterion; those are closed-loop target/settling failures. The clipped applied inputs satisfy motor bounds. iLQR's iteration-limit status is a convergence limitation even where the discrete endpoint is close to the target. For OSC, the ten-second simulation executes with one logged QP iteration-limit fallback, torso lean and contact-velocity diagnostics; finite execution and forward displacement are not a robust-walking certificate. Historical solver statuses and raw metrics are preserved without relabeling failed runs as successes.
+
+## F. Biped OSC: historical blocker and current boundaries
+
+The environment blocker described below is historical. The persistent WSL adapter now passes both-foot/COM/torso kinematic checks and completes a ten-second simulation; actuator-order limits are mapped and diagnostics are recorded. [WSL_SETUP.md](WSL_SETUP.md) contains the current results and limitations. Robust walking, hardware deployment and real-time operation remain unverified. The earlier source/environment observations below are retained for provenance.
 
 The supplied planar walker model has seven position/seven velocity coordinates, including planar translations and a torso revolute joint; qdot=v. Joint task J must index `velocity_start`, with zero bias for that scalar revolute task. Point/COM Jacobians should use Drake `kV` in world coordinates and matching bias accelerations. The original supplied methods for those point/COM quantities are preserved; the missing joint/contact implementations and notebook wiring are not declared validated.
 

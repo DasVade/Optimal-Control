@@ -3,6 +3,7 @@
 Does not optimize, simulate, or alter existing experiment outputs.
 """
 import os
+import argparse
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 os.environ.setdefault('MPLCONFIGDIR',str(ROOT/'.mplconfig'))
@@ -14,18 +15,42 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation,PillowWriter
 
-OUT=ROOT/'outputs';FIG=ROOT/'docs/figures/robotics';DATA=ROOT/'docs/results/robotics'
+parser=argparse.ArgumentParser()
+parser.add_argument('--main-only',action='store_true',help='Render only quadrotor/minimum-snap figures and quadrotor animation; do not curate metrics.')
+parser.add_argument('--quadrotor-run',type=Path)
+parser.add_argument('--minsnap-run',type=Path)
+parser.add_argument('--figure-output',type=Path,default=ROOT/'docs/figures/robotics')
+args=parser.parse_args()
+OUT=ROOT/'outputs';FIG=args.figure_output;DATA=ROOT/'docs/results/robotics'
 FIG.mkdir(parents=True,exist_ok=True);DATA.mkdir(parents=True,exist_ok=True)
 sources={name:OUT/f'{name}_20261023' for name in ['quadrotor','minsnap','ilqr','acrobot','acrobot_folded','supporting','osc','robotics_benchmark','ilqr_benchmark','acrobot_benchmark']}
-for name,source in sources.items():
-    for file in ['summary.json','config.json','environment.json']:
-        if (source/file).exists():shutil.copyfile(source/file,DATA/f'{name}_{file}')
+if args.quadrotor_run:sources['quadrotor']=args.quadrotor_run
+if args.minsnap_run:sources['minsnap']=args.minsnap_run
+if not args.main_only:
+    for name,source in sources.items():
+        for file in ['summary.json','config.json','environment.json']:
+            if (source/file).exists():shutil.copyfile(source/file,DATA/f'{name}_{file}')
 verification=OUT/'verification_20261023/verification.json'
-if verification.exists():shutil.copyfile(verification,DATA/'verification.json')
+if verification.exists() and not args.main_only:shutil.copyfile(verification,DATA/'verification.json')
 
 def trace(module,name):return np.load(sources[module]/name/'trajectory.npz')
 def finish(fig,name):fig.tight_layout();fig.savefig(FIG/name,dpi=165);plt.close(fig)
 plt.rcParams.update({'font.size':10,'axes.spines.top':False,'axes.spines.right':False})
+
+
+def export_quadrotor_animation():
+    # Saved nonlinear MPC rollout, with the model's pitch convention.
+    d=trace('quadrotor','mpc_n10_ic1');fig,ax=plt.subplots(figsize=(5,4));x=d['state'];t=d['time']
+    ax.set(xlim=(-.6,1.4),ylim=(-.6,1.4),xlabel='y (m)',ylabel='z (m)',aspect='equal')
+    ax.plot(0,0,'k*',label='Hover target');trail,=ax.plot([],[],lw=1);body,=ax.plot([],[],'o-',lw=3);ax.legend(loc='lower right')
+    title=ax.set_title('')
+    def frame(i):
+        state=x[i];offset=.25*np.array([np.cos(state[2]),np.sin(state[2])])
+        body.set_data([state[0]-offset[0],state[0]+offset[0]],[state[1]-offset[1],state[1]+offset[1]])
+        trail.set_data(x[:i+1,0],x[:i+1,1]);title.set_text(f'Constrained MPC | t={t[i]:.1f} s')
+        return body,trail,title
+    animation=FuncAnimation(fig,frame,frames=range(0,len(t),5),interval=100)
+    animation.save(FIG/'quadrotor.gif',writer=PillowWriter(fps=10));plt.close(fig)
 
 fig,axes=plt.subplots(2,2,figsize=(10,6))
 for name,label in [('lqr_ic1','Clipped LQR'),('mpc_n5_ic1','MPC: 4 steps'),('mpc_n10_ic1','MPC: 9 steps'),('mpc_n20_ic1','MPC: 19 steps')]:
@@ -37,7 +62,7 @@ for name,label in [('lqr_ic1','Clipped LQR'),('mpc_n5_ic1','MPC: 4 steps'),('mpc
 axes[0,0].plot(0,0,'k*');axes[0,0].set(xlabel='y (m)',ylabel='z (m)',title='Matched nonlinear plant trajectories');axes[0,0].legend(fontsize=8)
 axes[0,1].set(xlabel='Time (s)',ylabel='Position error norm (m)')
 axes[1,0].set(xlabel='Time (s)',ylabel='Pitch (rad)')
-axes[1,1].set(xlabel='Time (s)',ylabel='Squared input above hover (N^2)')
+axes[1,1].set(xlabel='Time (s)',ylabel='Squared input deviation\nrelative to hover (N^2)')
 fig.suptitle('Hover recovery: x0=[0.5,0.5,0,1,1,0], motors 0-5.5 N',fontsize=12)
 finish(fig,'quadrotor_comparison.png')
 
@@ -53,6 +78,10 @@ axes[0].set(xlabel='y (m)',ylabel='z (m)',title='Same waypoint geometry')
 axes[1].set(xlabel='Time (s)',ylabel='Speed (m/s)',title='Free endpoint derivatives')
 axes[2].set(xlabel='Time (s)',ylabel='Snap norm (m/s^4)',title='Uniform duration scaling')
 axes[1].legend();finish(fig,'minimum_snap.png')
+if args.main_only:
+    export_quadrotor_animation()
+    print(f'Rendered main figures from saved traces in {FIG}; metrics unchanged.')
+    raise SystemExit(0)
 
 fig,axes=plt.subplots(1,3,figsize=(11,3.5))
 for name,label in [('lqr_r0.1','Clipped LQR, R=0.1 I'),('mpc_r0.1','MPC, R=0.1 I')]:
@@ -86,16 +115,5 @@ for i,initialization in enumerate(['acrobot','acrobot_folded']):
     axes[i].set(xlabel='x (m)',ylabel='z (m)',title=f'{initialization}: failed trial');axes[i].axis('equal');axes[i].legend(fontsize=7)
 finish(fig,'acrobot_failures.png')
 
-# A real nonlinear MPC rollout; drawings use the model's pitch convention.
-d=trace('quadrotor','mpc_n10_ic1');fig,ax=plt.subplots(figsize=(5,4));x=d['state'];t=d['time']
-ax.set(xlim=(-.6,1.4),ylim=(-.6,1.4),xlabel='y (m)',ylabel='z (m)',aspect='equal')
-ax.plot(0,0,'k*',label='Hover target');trail,=ax.plot([],[],lw=1);body,=ax.plot([],[],'o-',lw=3);ax.legend(loc='lower right')
-title=ax.set_title('')
-def frame(i):
-    state=x[i];offset=.25*np.array([np.cos(state[2]),np.sin(state[2])])
-    body.set_data([state[0]-offset[0],state[0]+offset[0]],[state[1]-offset[1],state[1]+offset[1]])
-    trail.set_data(x[:i+1,0],x[:i+1,1]);title.set_text(f'Constrained MPC | t={t[i]:.1f} s')
-    return body,trail,title
-animation=FuncAnimation(fig,frame,frames=range(0,len(t),5),interval=100)
-animation.save(FIG/'quadrotor.gif',writer=PillowWriter(fps=10));plt.close(fig)
+export_quadrotor_animation()
 print('Generated figures and curated metrics in docs/',flush=True)

@@ -24,6 +24,27 @@ The core experiments do not require Drake, notebook servers, video codecs, raw c
 
 ## Main results
 
+For the focused portfolio results and plots, run from the repository root in the prepared Windows environment:
+
+```powershell
+.\.venv\Scripts\python.exe -m control_portfolio.cli quadrotor --config 'configs/robotics.json' --output 'outputs/review_quadrotor'
+.\.venv\Scripts\python.exe -m control_portfolio.cli minsnap --config 'configs/robotics.json' --output 'outputs/review_minsnap'
+.\.venv\Scripts\python.exe scripts/build_robotics.py --main-only --quadrotor-run 'outputs/review_quadrotor' --minsnap-run 'outputs/review_minsnap' --figure-output 'outputs/review_figures'
+Invoke-Item -LiteralPath 'outputs/review_figures/quadrotor_comparison.png'
+Invoke-Item -LiteralPath 'outputs/review_figures/minimum_snap.png'
+Invoke-Item -LiteralPath 'outputs/review_figures/quadrotor.gif'
+```
+
+Choose fresh run directory names if these already exist. `--main-only` reads numerical traces and writes just the two main figures and quadrotor animation into the requested figure folder; it does not curate or overwrite historical metrics. Only the reviewed effort-axis wording changed in the tracked quadrotor figure; plotted numerical data are unchanged.
+
+The independent saved-result audit can be reproduced with:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/review_main_results.py --output 'outputs/my_technical_review.json'
+```
+
+It reads the original `quadrotor_20261023` / `minsnap_20261023` run folders and refuses an existing output file. A fresh clone can rerun the CLI using those archived names to regenerate the inputs, or set `--runs` to an alternate parent containing the same two folder names. Its small curated output is [technical_review.json](results/robotics/technical_review.json); no previous run is modified. The report details the continuous/discrete cost limitation and the cubic/nullspace proof.
+
 ```powershell
 .\.venv\Scripts\python.exe -m control_portfolio.cli robotics-benchmark --output 'outputs/reproduce_benchmark'
 .\.venv\Scripts\python.exe -m control_portfolio.cli quadrotor --config 'configs/robotics.json' --output 'outputs/reproduce_quadrotor'

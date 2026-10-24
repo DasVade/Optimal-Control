@@ -37,6 +37,31 @@ def test_snap_constraints_and_duration_scaling():
         np.testing.assert_allclose(minsnap.evaluate(a,t),minsnap.evaluate(b,2*t),atol=1e-6)
 
 
+def test_free_endpoint_global_cubic_degeneracy():
+    # Free endpoint conditions must allow a zero-snap solution when the data do.
+    t=np.arange(5.)
+    polynomial=np.column_stack([1+2*t-.3*t*t+.1*t**3,-2+.4*t+.2*t*t-.05*t**3])
+    solution=minsnap.solve(polynomial,[1.]*4)
+    assert solution['metrics']['snap_integral']<1e-15
+    assert solution['metrics']['waypoint_residual']<1e-9
+    # Actual portfolio waypoints do not lie on any global cubic at these times.
+    points=np.array([[-3,-4],[0,0],[2,3],[4,0],[8,-4]])
+    vandermonde=np.vander(t,4,increasing=True)
+    assert np.linalg.matrix_rank(vandermonde)==4
+    assert np.linalg.matrix_rank(np.column_stack([vandermonde,points]))==5
+    np.testing.assert_array_equal(np.diff(points,n=4,axis=0),[[1,10]])
+
+
+def test_mpc_two_state_cost_convention():
+    # Independent one-action quadratic minimizer: stage R, terminal Q, no T factor.
+    c=quadrotor.Controller(horizon=2,prediction_dt=.1)
+    initial=np.array([0.,0.,0.,0.,.01,0.])
+    expected=-np.linalg.solve(c.r+c.bd.T@c.q@c.bd,c.bd.T@c.q@c.ad@initial)
+    command,record=c.command(initial)
+    assert not record['fallback']
+    np.testing.assert_allclose(command-c.hover,expected,atol=1e-7)
+
+
 def test_pendulum_hover_and_discrete_derivatives():
     x=np.array([.1,.2,.05,.4,.1,-.2,.15,-.3]);u=np.array([5.8,6.])
     a,b=ilqr.jacobians(x,u,.02)
