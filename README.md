@@ -2,9 +2,11 @@
 
 Input-constrained MPC for planar quadrotor hover and minimum-snap waypoint planning. An extension of **Penn MEAM 5170 coursework**, with solver implementations, model and simulation corrections, numerical checks, and reproducible experiments using Python, NumPy, SciPy and OSQP.
 
-<img src="docs/figures/robotics/quadrotor.gif" width="500" alt="Animated nonlinear simulation of constrained MPC recovering a planar quadrotor to a fixed hover target">
+<img src="docs/figures/robotics/quadrotor_lqr_mpc.gif" width="800" alt="Synchronized saved nonlinear hover recovery traces: clipped LQR alongside constrained MPC N=10 at identical simulation times">
 
-*Simulated hover recovery with MPC N=10: initial state `[y,z,theta,vy,vz,omega]=[0.5,0.5,0,1,1,0]`, fixed target at the origin, and motor limits of 0-5.5 N. The animation shows this single controller over 10 simulated seconds; the blue line is its traveled path.*
+*Synchronized clipped LQR and MPC N=10 hover recovery: initial state `[y,z,theta,vy,vz,omega]=[0.5,0.5,0,1,1,0]`, fixed target at the origin, and motor limits of 0–5.5 N. Both panels use the same clock and axis limits over 10 simulated seconds. Rendered from the preserved traces; no new simulation or tuning.*
+
+[Project page: additional demonstrations and limitations](https://yixiaoliu.me/projects/robotic-motion-planning-optimal-control/) · [Demo provenance and verification](docs/DEMONSTRATIONS.md)
 
 ## Methods
 

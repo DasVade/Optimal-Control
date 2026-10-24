@@ -1,0 +1,31 @@
+{
+  "quadrotor_20261023/lqr_ic1": {
+    "sha256": "c90e2ff63c6d5b762be5fa80c614be9d8594784a752e9c53727029266c4ecaa0"
+  },
+  "quadrotor_20261023/mpc_n10_ic1": {
+    "sha256": "c40baad0c751a0b8a2345368b5f9eb91ddc0c1c6cf65a53ff7ab3ff81808857c"
+  },
+  "verified_20261023/cartpole/swing_30deg": {
+    "sha256": "8411b29f2e4bd37437eeae46907d791ffef8b0a7997c9286246d13be19677f4e"
+  },
+  "cartpole": {
+    "settling_s": 9.84,
+    "switch_s": [
+      2.79
+    ],
+    "final_state": [
+      -0.0004019329906304389,
+      -9.424790547846277,
+      7.898108794583651e-05,
+      1.7205706940419116e-05
+    ],
+    "max_abs_cart_m": 4.056762852969687,
+    "reference_bound_exceedance_fraction": 0.10644677661169415
+  },
+  "minsnap_20261023/duration1.0": {
+    "sha256": "3fe61e5f93765f9a3c265e8210c2a35be6bec73bf444c9948ed0f19487d1b650"
+  },
+  "minsnap_20261023/duration2.0": {
+    "sha256": "eeda564fb06b55e1c54ddf28b4f5ebef5d384dc6684db06ac58a8cb320afd6e5"
+  }
+}
