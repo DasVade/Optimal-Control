@@ -1,0 +1,646 @@
+[
+  {
+    "archive": "Homework4-MEAM-5170-Fall-2025.zip",
+    "entry": "pos_constraints.py",
+    "local": "materials/hw4/pos_constraints.py",
+    "sha256": "7cc5d71326faba5df7c967890111efb3570ab3a2f8a57a7738cd89a1c47729f4",
+    "bytes": 820
+  },
+  {
+    "archive": "Homework4-MEAM-5170-Fall-2025.zip",
+    "entry": "hw4.ipynb",
+    "local": "materials/hw4/hw4.ipynb",
+    "sha256": "18c70d7d3e14cded0eae54041acc2ba7435453790a8018f054b66b92d81510de",
+    "bytes": 6885
+  },
+  {
+    "archive": "Homework4-MEAM-5170-Fall-2025.zip",
+    "entry": "minsnap.py",
+    "local": "materials/hw4/minsnap.py",
+    "sha256": "b82a88f12b9dae6173e65913617ba6b9c7fb69bf5fdc7ea5ffc289b29675cb41",
+    "bytes": 3174
+  },
+  {
+    "archive": "Homework4-MEAM-5170-Fall-2025.zip",
+    "entry": "__pycache__/pos_constraints.cpython-310.pyc",
+    "local": "materials/hw4/__pycache__/pos_constraints.cpython-310.pyc",
+    "sha256": "4357246bef7245b97b253a2b89113107f0525a554f5a9dbf3276984844abb995",
+    "bytes": 986
+  },
+  {
+    "archive": "Homework4-MEAM-5170-Fall-2025.zip",
+    "entry": "__pycache__/minsnap.cpython-310.pyc",
+    "local": "materials/hw4/__pycache__/minsnap.cpython-310.pyc",
+    "sha256": "d33b1c3fd1460e76d0974345fa4e0e526c362483e50caf6e934a929ddff6328f",
+    "bytes": 2944
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "Init.ipynb",
+    "local": "materials/hw5/Init.ipynb",
+    "sha256": "e8c2a1a368a3b7f6e6f01cb684af64186811ab1abd5180fa40676561ea04ed90",
+    "bytes": 3138
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "acrobot.urdf",
+    "local": "materials/hw5/acrobot.urdf",
+    "sha256": "057ef10f18363356b3366b8f19feaf750980b389f05a84e72a49863b9f23fbb3",
+    "bytes": 2688
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "requirements.txt",
+    "local": "materials/hw5/requirements.txt",
+    "sha256": "0a5dd3cd7c9c40581b7e2af16c9e0e565533612a526deb6614dd4e607b20ccf8",
+    "bytes": 20
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "__pycache__/dynamics_constraints.cpython-310.pyc",
+    "local": "materials/hw5/__pycache__/dynamics_constraints.cpython-310.pyc",
+    "sha256": "1e315fd4bdab56191a017c7bed5e14bc3927b7d0d1da029c9378ec3dc682aae2",
+    "bytes": 1871
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "quad_visualizer.py",
+    "local": "materials/hw5/quad_visualizer.py",
+    "sha256": "37d821f2a806908ab0cb2344dfaaa1537b1541d9a8f49089fd4c7839205f3f14",
+    "bytes": 4610
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "__pycache__/iLQR.cpython-310.pyc",
+    "local": "materials/hw5/__pycache__/iLQR.cpython-310.pyc",
+    "sha256": "97ce92100acfe9db1a2929d429c93dcf092ef3e377dd04a6f0932e335b04801b",
+    "bytes": 10333
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "kinematic_constraints.py",
+    "local": "materials/hw5/kinematic_constraints.py",
+    "sha256": "d3b8a4423b9e80d423b31c784d09267f26d65c3bd2c2edd430cad663d59dacc2",
+    "bytes": 1458
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "hw5.ipynb",
+    "local": "materials/hw5/hw5.ipynb",
+    "sha256": "8894914d17f6e099bb93d684b5c1ab6ba24e8f367db7249009002dc1b8229121",
+    "bytes": 29700
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "find_swingup_trajectory.py",
+    "local": "materials/hw5/find_swingup_trajectory.py",
+    "sha256": "f9bbd33869ce1e6316ea6170d9c233a914f569a4495a6f9bbd8793dc3f2191de",
+    "bytes": 3837
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "__pycache__/quad_visualizer.cpython-310.pyc",
+    "local": "materials/hw5/__pycache__/quad_visualizer.cpython-310.pyc",
+    "sha256": "ddd45ceda8e7c20c24420aa5468fdcdc231e481ee2a7b45df731a56481aa0ef8",
+    "bytes": 4074
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "__pycache__/kinematic_constraints.cpython-310.pyc",
+    "local": "materials/hw5/__pycache__/kinematic_constraints.cpython-310.pyc",
+    "sha256": "6542132a78c4fd638d9a77145ff224d3122692aeead446469b6b94242202d64c",
+    "bytes": 1983
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "iLQR.py",
+    "local": "materials/hw5/iLQR.py",
+    "sha256": "7f4869845dd227631021a519f21600e3480e8b9a9139e19841515e26128c5ab1",
+    "bytes": 10561
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "__pycache__/find_swingup_trajectory.cpython-310.pyc",
+    "local": "materials/hw5/__pycache__/find_swingup_trajectory.cpython-310.pyc",
+    "sha256": "f9e0f97517b958e5275761a26c08c66cd8c9a9ffe1f62ed2d36c4446bfee0b58",
+    "bytes": 3174
+  },
+  {
+    "archive": "Homework5-MEAM517-Fall-2025.zip",
+    "entry": "dynamics_constraints.py",
+    "local": "materials/hw5/dynamics_constraints.py",
+    "sha256": "1c4276b3dab2b915c3861d58bc7a8fa35ecc7bdc034780bced1af8ff9cdfc6e5",
+    "bytes": 1630
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "Init.ipynb",
+    "local": "materials/hw6/Init.ipynb",
+    "sha256": "a61938f43d2a3b0e5de9c33ce3a7668155161e99378f95b6cf7791f8e97a6bd8",
+    "bytes": 3032
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "hw6.ipynb",
+    "local": "materials/hw6/hw6.ipynb",
+    "sha256": "3560fbce976c602b30be855b4f4c0aff1cae5525dac188cd91b9371464006d5f",
+    "bytes": 17083844
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "fsm_utils.py",
+    "local": "materials/hw6/fsm_utils.py",
+    "sha256": "9baf8ed61d0372e2df6ff62c61ec520c4416acd0e6ccd61582f21ab4d65a4528",
+    "bytes": 443
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "osc_tracking_objective.py",
+    "local": "materials/hw6/osc_tracking_objective.py",
+    "sha256": "a193ea9d71c2e79ec7ef0880740fdf357a60cdf8dfd923e46d8b0aa7a6730797",
+    "bytes": 6350
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "quadrotor.py",
+    "local": "materials/hw6/quadrotor.py",
+    "sha256": "2875574407ca8548495dfc34a63be77f045b7230a7a5ca042057ef121bf6829d",
+    "bytes": 4366
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "osc.py",
+    "local": "materials/hw6/osc.py",
+    "sha256": "43eb18303c930855411a997e231e1277130c4fdf2b29988cbcc8409649dff1aa",
+    "bytes": 8233
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "create_animation.py",
+    "local": "materials/hw6/create_animation.py",
+    "sha256": "9ecf3d28c9479d341a82d068dbb7df133d57c7f959f471328e867c271d108f29",
+    "bytes": 4621
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "quad_sim.py",
+    "local": "materials/hw6/quad_sim.py",
+    "sha256": "d2fc70edbcbcafa364ffec3af003f9656b8f9b381605b45be5b585e5f29c2ff0",
+    "bytes": 2655
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "footstep_planner.py",
+    "local": "materials/hw6/footstep_planner.py",
+    "sha256": "353a5f3cc4aec5b5443247ee8893a95e1c8a694e1eca46f4a15fddb449dceaa0",
+    "bytes": 9691
+  },
+  {
+    "archive": "Homework-6-MEAM-517-Fall-2025(1).zip",
+    "entry": "planar_walker.urdf",
+    "local": "materials/hw6/planar_walker.urdf",
+    "sha256": "a2e403366f4a0324763cba558ad9d2d1132d3b600ad832fb38081a48d53358f9",
+    "bytes": 6885
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW1/homework1.pdf",
+    "local": "materials/archive/HW1/homework1.pdf",
+    "sha256": "3e33335bb31cc2fafff0136e03137fe4e76b138f8b27d5317581a706c5f35791",
+    "bytes": 148621
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW1/HW1 Yixiao.pdf",
+    "local": "materials/archive/HW1/HW1 Yixiao.pdf",
+    "sha256": "c81d7f869b99425e50fcb42b5c01228b36421a67cf4db0c4366dea531f363f8e",
+    "bytes": 72941697
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW1/graph/P5c_phase_portrait_Yixiao_clean.png",
+    "local": "materials/archive/HW1/graph/P5c_phase_portrait_Yixiao_clean.png",
+    "sha256": "565dce739eb810d6320526d2c136f9e19dd6f7dbbdadbaa299df751d3f1d7ddf",
+    "bytes": 598767
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW1/graph/P5d_basin_boundary_Yixiao.png",
+    "local": "materials/archive/HW1/graph/P5d_basin_boundary_Yixiao.png",
+    "sha256": "0344fdf14913a835e124022ab3400a0aef910c42317cc0dce96832370729fe62",
+    "bytes": 611420
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW1/graph/P5e_trajectories_Yixiao.png",
+    "local": "materials/archive/HW1/graph/P5e_trajectories_Yixiao.png",
+    "sha256": "4a95bd401c136a98f3766c70d5a122b080952046e6520f91d46eee1fb0a6be54",
+    "bytes": 576314
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW1/codes/5c.py",
+    "local": "materials/archive/HW1/codes/5c.py",
+    "sha256": "76e77110724b043ce15a69f4194c25bd8db1b12283f625074b5bb6cd55a9e6e7",
+    "bytes": 19
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW1/codes/phase_portrait_p5c.py",
+    "local": "materials/archive/HW1/codes/phase_portrait_p5c.py",
+    "sha256": "36ac06067ed8d7822ae323a7313cd1342c8fcddc007e3cbe39dca4b72aa5cc4d",
+    "bytes": 2425
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/\u00c2\u00b5\u00c3\u00aa\u00c2\u00ac\u00cf\u0192\u00e2\u2013\u2019\u00c3\u20262025-09-11 23.04.15.png",
+    "local": "materials/archive/HW2/\u00c2\u00b5\u00c3\u00aa\u00c2\u00ac\u00cf\u0192\u00e2\u2013\u2019\u00c3\u20262025-09-11 23.04.15.png",
+    "sha256": "4887e94575f15677dbc37379b0e09d8948be32289036f69ab3af0c53ef0693a7",
+    "bytes": 182814
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/quadrotor.py",
+    "local": "materials/archive/HW2/quadrotor.py",
+    "sha256": "ea92b8d3444bb7a39a19e5aba349e1590e0a49d1d46b6b0de797a81d9b2877be",
+    "bytes": 3933
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/homework2.pdf",
+    "local": "materials/archive/HW2/homework2.pdf",
+    "sha256": "d8ecc4e6a2a80983fe64c3a562bc6f12e13e72b9da01552ba6c9eaa458f8dde7",
+    "bytes": 241644
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/grid_world.py",
+    "local": "materials/archive/HW2/grid_world.py",
+    "sha256": "e63dc12bb481e00b6cec5a55b553e0ac69086379ce9d9bf6e93c66a4cf27a493",
+    "bytes": 3109
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/\u00c2\u00b5\u00c3\u00aa\u00c2\u00ac\u00cf\u0192\u00e2\u2013\u2019\u00c3\u20262025-09-11 23.03.46.png",
+    "local": "materials/archive/HW2/\u00c2\u00b5\u00c3\u00aa\u00c2\u00ac\u00cf\u0192\u00e2\u2013\u2019\u00c3\u20262025-09-11 23.03.46.png",
+    "sha256": "17b80cd63a759d922adfb00f5fcd5e2ebc5ea09260ea3035078047cce16cc7cd",
+    "bytes": 173132
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/value_iteration.py",
+    "local": "materials/archive/HW2/value_iteration.py",
+    "sha256": "66718b6e78e1c719c5e27a0e8d1fa9efe66e49eeda3835daaa03b257ac9d036b",
+    "bytes": 2582
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/HW2 Yixiao Liu.pdf",
+    "local": "materials/archive/HW2/HW2 Yixiao Liu.pdf",
+    "sha256": "2b8e2805109838b929f9c6926f259b70551c072366e51b37fdc4b19e980700a4",
+    "bytes": 56468386
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/value_function-2.png",
+    "local": "materials/archive/HW2/value_function-2.png",
+    "sha256": "da76268c34ea77a77bace4a3c031a2da58a55304a2d9b72c02ff85a288d51606",
+    "bytes": 69495
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/value_function.png",
+    "local": "materials/archive/HW2/value_function.png",
+    "sha256": "4a93e759932693b6483e499de049a52358201b6b71faa181fb6fa22795ced048",
+    "bytes": 72098
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW2/HW2 tex/hw2 ai.tex",
+    "local": "materials/archive/HW2/HW2 tex/hw2 ai.tex",
+    "sha256": "5eb27192a0a570a0fb2c723857f9b3ad0580ad408e7eb2614675555a454736d1",
+    "bytes": 9432
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/homework3.pdf",
+    "local": "materials/archive/HW3/homework3.pdf",
+    "sha256": "459ef186065d8918f1b3bea54b02528d4d95c376d5e0beff4ef4fd1e08858548",
+    "bytes": 971646
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/simulate_unicycle.py",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/simulate_unicycle.py",
+    "sha256": "7a0fa53154d4d8f67b826c4bb99c095847cdcf773723eecf2b7de31685e246f4",
+    "bytes": 1703
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/unicycle_input.py",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/unicycle_input.py",
+    "sha256": "554cb4c4b326bca659ea511a7905ee378f3f160552e9821209bd5eb163b13ed8",
+    "bytes": 1149
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/Init.ipynb",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/Init.ipynb",
+    "sha256": "37ed74a0b29e7567acb5658e9b75664b67c3c29232071ec86d705fa255b27dc0",
+    "bytes": 2008
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/unicycle_trajectory.png",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/unicycle_trajectory.png",
+    "sha256": "19ab8aedc957afc3c9d65ade59317b0a69064cdaae62f55b17f90719058f5e9e",
+    "bytes": 77146
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/cartpole.py",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/cartpole.py",
+    "sha256": "05c32c142d71de2c49e77cffea83a958622f2125df22886a4018424edf63bb53",
+    "bytes": 3246
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/plot_unicycle_trajectory.py",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/plot_unicycle_trajectory.py",
+    "sha256": "11860152d12fd02c1f24cb3c826a8455ff688d1d0b93db9f71d01bb7a89aef5c",
+    "bytes": 2046
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/unicycle_sim.py",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/unicycle_sim.py",
+    "sha256": "aaf1b5643991af193be1d9c02841340857443d322fa2304c3cc6945b7741a1a4",
+    "bytes": 1726
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/hw3.ipynb",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/hw3.ipynb",
+    "sha256": "5c4a3df2c87c8e4535853de5d3b1d2eaf234b7e417ef763fb4be9babd2dac775",
+    "bytes": 1091173
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/cartpole_trajectory.png",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/cartpole_trajectory.png",
+    "sha256": "9044daaf811cc967859040b8c1eacad32cbb7a5ea56c2a29b3df83e808b78dbe",
+    "bytes": 38869
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/unicycle_spline.py",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/unicycle_spline.py",
+    "sha256": "965aed5a594db380ca069cbe7db077f53c4866869224008838806add1ecac576",
+    "bytes": 1900
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/generate_unicycle_plot.py",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/generate_unicycle_plot.py",
+    "sha256": "4dcdf308526fd9c88c3eaacac2c936b9c91c48d6c48e3e7806f86d50e029487b",
+    "bytes": 666
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/cartpole_sim.py",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/cartpole_sim.py",
+    "sha256": "4db112d66842811d43c2c7334efdc91831056eb1042e765042d63379f6fd7d00",
+    "bytes": 2466
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/HW3 Tex/Hw3.log",
+    "local": "materials/archive/HW3/HW3 Tex/Hw3.log",
+    "sha256": "c383551c360c4215ab5e57570a8ee37ce01a865aaa4ebea65e8b52f3bbae9150",
+    "bytes": 8590
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/HW3 Tex/Hw3.aux",
+    "local": "materials/archive/HW3/HW3 Tex/Hw3.aux",
+    "sha256": "329f6a0399c64407df4acf3f50dc1f53066e716c4ff3ab54f1f86b180ab0b14d",
+    "bytes": 896
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/HW3 Tex/Hw3.synctex.gz",
+    "local": "materials/archive/HW3/HW3 Tex/Hw3.synctex.gz",
+    "sha256": "3fd9a16d07383e4516f29b2d078d3efa050c6a1a16d89a96726a5623bf8f19fd",
+    "bytes": 32057
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/HW3 Tex/Hw3.tex",
+    "local": "materials/archive/HW3/HW3 Tex/Hw3.tex",
+    "sha256": "d64c84898aed20db06971f71e8082d8f0bab66318ca3bee31ea3dd3cf1b87ee5",
+    "bytes": 9501
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/HW3 Tex/Hw3.pdf",
+    "local": "materials/archive/HW3/HW3 Tex/Hw3.pdf",
+    "sha256": "69935071c1a78e024e86115dab3f14929d616db267b98d35863af68c713b156d",
+    "bytes": 200789
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/HW3 Tex/1.png",
+    "local": "materials/archive/HW3/HW3 Tex/1.png",
+    "sha256": "d5034cb081aaa13287b31e73267a21ff82bc0eef40f2ce721b64ecdef8e46937",
+    "bytes": 188521
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/unicycle_sim.cpython-310.pyc",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/unicycle_sim.cpython-310.pyc",
+    "sha256": "ce44c300806a7cfca16ae3578725df3844dabd516d129d49394bd277e75d4a6f",
+    "bytes": 1607
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/unicycle_spline.cpython-310.pyc",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/unicycle_spline.cpython-310.pyc",
+    "sha256": "3cc184739473bc2923fbb19bb732a5e7ffc6d93784af57025e994e3d7c2972ac",
+    "bytes": 846
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/cartpole_sim.cpython-310.pyc",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/cartpole_sim.cpython-310.pyc",
+    "sha256": "347f20a63d82ec1a3891bdfe05b2aaae3a4476a23386eec8354cce992274bd96",
+    "bytes": 2974
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/plot_unicycle_trajectory.cpython-310.pyc",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/plot_unicycle_trajectory.cpython-310.pyc",
+    "sha256": "d82f042da868bf8973e32878986004a9a1a5006831df41a22122dab681c054c2",
+    "bytes": 2548
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/unicycle_input.cpython-310.pyc",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/unicycle_input.cpython-310.pyc",
+    "sha256": "470f0e549a76d57b3a5dd4b1674a7d1bdec9206afb070da81406d6615cb39c8b",
+    "bytes": 399
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/cartpole.cpython-310.pyc",
+    "local": "materials/archive/HW3/Homework3-MEAM-5170-Fall-2025-Duplicate/__pycache__/cartpole.cpython-310.pyc",
+    "sha256": "dbe4403263950063c4cfd8f5ddfcaff18e8320341372861c972dbce1eedc2d90",
+    "bytes": 2017
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/homework4.pdf",
+    "local": "materials/archive/HW4/homework4.pdf",
+    "sha256": "ac364fce5a17f067bd3193f759fb51eca165ee5f58202988a02c63601ad570c6",
+    "bytes": 256260
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/code/minsnap.py",
+    "local": "materials/archive/HW4/code/minsnap.py",
+    "sha256": "627d1749674e0b47fe6c8aa54d49ae1b1253cf6964ec1ad548e0dba6af3b81f7",
+    "bytes": 4840
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/code/pos_constraints.py",
+    "local": "materials/archive/HW4/code/pos_constraints.py",
+    "sha256": "abdb8539aeb8fa78a2afcd6389b680867ba11b3425c536a7ff130745cef34a5f",
+    "bytes": 1345
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/HW4 Tex/HW4.aux",
+    "local": "materials/archive/HW4/HW4 Tex/HW4.aux",
+    "sha256": "1073cb95045d5d6519d6d4355760bfffae7ef698a0866de40c61361dcf7c833c",
+    "bytes": 1328
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/HW4 Tex/HW4.log",
+    "local": "materials/archive/HW4/HW4 Tex/HW4.log",
+    "sha256": "73f6ec6afde1cc595e8ce3c66bdebe7b3f0f2593ee98c8d7c23443182a894f8d",
+    "bytes": 8202
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/HW4 Tex/HW4.synctex.gz",
+    "local": "materials/archive/HW4/HW4 Tex/HW4.synctex.gz",
+    "sha256": "f31c6b8faa5ffcc493d4d13b0e2c3c1274cc2668a0248547621b29a13c4d5964",
+    "bytes": 36437
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/HW4 Tex/HW4.tex",
+    "local": "materials/archive/HW4/HW4 Tex/HW4.tex",
+    "sha256": "46dbd7ac5732145228f08446b7d8271127035e2b12d3e8e1b334824a879303a1",
+    "bytes": 9517
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/HW4 Tex/minsnap_trajectory_placeholder.png",
+    "local": "materials/archive/HW4/HW4 Tex/minsnap_trajectory_placeholder.png",
+    "sha256": "9a5b760ca3d939ff11f960e7b27747d98f68d405da8595959a66e9609e970422",
+    "bytes": 16539
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW4/HW4 Tex/HW4.pdf",
+    "local": "materials/archive/HW4/HW4 Tex/HW4.pdf",
+    "sha256": "75a03a75abc2d6dc01113bbbc0121ac46c9053d0eacfd3cc5dc19f5447491557",
+    "bytes": 83052
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW5/homework5.pdf",
+    "local": "materials/archive/HW5/homework5.pdf",
+    "sha256": "659da49cd487007d7b126cc6beedeba7395591366f7b444e2889d2ba47d8706c",
+    "bytes": 271325
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW5/TEX/HW5.log",
+    "local": "materials/archive/HW5/TEX/HW5.log",
+    "sha256": "dbce16cb639100cf2abf8c5c0cccc273db741f83aa6c3bf128add2ef18854309",
+    "bytes": 7924
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW5/TEX/HW5.aux",
+    "local": "materials/archive/HW5/TEX/HW5.aux",
+    "sha256": "fda7d906ca4e9fa1bf0cbbcf4ca29e6077599210776715184a686a63220d1a05",
+    "bytes": 1082
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW5/TEX/HW5.tex",
+    "local": "materials/archive/HW5/TEX/HW5.tex",
+    "sha256": "b7ee6b32b40530b535f614db4f7c6a5825c22b020446c61c3e37f9194c37d9f2",
+    "bytes": 3248
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW5/TEX/HW5.pdf",
+    "local": "materials/archive/HW5/TEX/HW5.pdf",
+    "sha256": "d3c3a2d62349037e3203fa3368e6cc204aa2407b1b1464f6d574ce03a205d039",
+    "bytes": 29421
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW5/TEX/HW5.synctex.gz",
+    "local": "materials/archive/HW5/TEX/HW5.synctex.gz",
+    "sha256": "5b0022fef047399eb5bbec9999f36999d822499376049c85037f1206fb73da9a",
+    "bytes": 12519
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW6/homework6.pdf",
+    "local": "materials/archive/HW6/homework6.pdf",
+    "sha256": "42d2174f18c4f1fc208f96be93a8b26705728474ffe59f41758ff81beeca6946",
+    "bytes": 221669
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW6/TEX/HW6.synctex.gz",
+    "local": "materials/archive/HW6/TEX/HW6.synctex.gz",
+    "sha256": "0f75ec2410b851c847da33e215a2100296861dd2c2cb211ea9a381392d0d6682",
+    "bytes": 14842
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW6/TEX/HW6.log",
+    "local": "materials/archive/HW6/TEX/HW6.log",
+    "sha256": "4ce20f755b11681587b2c86d505440e434abf76f226a51fc77e0cfba9737281d",
+    "bytes": 9982
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW6/TEX/HW6.aux",
+    "local": "materials/archive/HW6/TEX/HW6.aux",
+    "sha256": "ad1a3c8d51708dfb1fb1a481ab1963e8b3154aa833295872183a1a0602909d2c",
+    "bytes": 115
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW6/TEX/HW6.tex",
+    "local": "materials/archive/HW6/TEX/HW6.tex",
+    "sha256": "ee85b4139e342ed00aaa5b3fedd28add465ae95d63e047c71ad2cc9f425d61f5",
+    "bytes": 4725
+  },
+  {
+    "archive": "Archive.zip",
+    "entry": "HW6/TEX/HW6.pdf",
+    "local": "materials/archive/HW6/TEX/HW6.pdf",
+    "sha256": "22fd138cfe419c5d4ddb064c70a4e8f41b722624b0737dc39507149c910a40b3",
+    "bytes": 43723
+  }
+]
