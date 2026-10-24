@@ -1,0 +1,119 @@
+{
+  "checks": [
+    {
+      "module": "quadrotor",
+      "method": "lqr",
+      "comparison": "RK4 integration dt .005 versus .0025 s, same held controller period .02 s",
+      "max_state_difference": 3.538943582626075e-10,
+      "metrics": {
+        "position_rmse_m": 0.28730307499825397,
+        "final_state_error": [
+          9.82723566359145e-09,
+          8.89509397628124e-08,
+          6.3266010341396435e-09,
+          -1.225455654012522e-08,
+          -1.565604916240615e-07,
+          -3.786466596478849e-08
+        ],
+        "success": true,
+        "settling_time_s": 2.68,
+        "control_effort_above_hover_N2s": 3.872962686422774,
+        "peak_input_N": 5.5,
+        "saturation_fraction": 0.015,
+        "applied_bound_violation_N": -0.0,
+        "solver_failures": 0,
+        "max_constraint_violation": 0.0,
+        "solve_time_median_s": 1.300009898841381e-06,
+        "solve_time_p95_s": 1.9999861251562834e-06,
+        "wall_seconds": 0.07344649999868125
+      }
+    },
+    {
+      "module": "quadrotor",
+      "method": "mpc",
+      "comparison": "RK4 integration dt .005 versus .0025 s, same held controller period .02 s",
+      "max_state_difference": 1.0076905976319495e-10,
+      "metrics": {
+        "position_rmse_m": 0.3501347582179278,
+        "final_state_error": [
+          1.4696167246649486e-07,
+          1.0517982548742016e-06,
+          -1.990123954276293e-07,
+          -5.528278168612792e-07,
+          7.318951079359954e-07,
+          4.0921689047946597e-07
+        ],
+        "success": true,
+        "settling_time_s": 3.2600000000000002,
+        "control_effort_above_hover_N2s": 2.4020890613610595,
+        "peak_input_N": 5.291266009300015,
+        "saturation_fraction": 0.0,
+        "applied_bound_violation_N": 0.0,
+        "solver_failures": 0,
+        "max_constraint_violation": 1.719287433789683e-14,
+        "solve_time_median_s": 0.00010064999514725059,
+        "solve_time_p95_s": 0.00012655000173253934,
+        "wall_seconds": 0.12710349998087622
+      }
+    },
+    {
+      "module": "ilqr",
+      "seed": 0,
+      "comparison": "Independent open-loop replay: two RK4 .01 s steps per saved .02 s action",
+      "max_state_difference": 0.11605297154749854,
+      "state_rmse": 0.008745954862676215,
+      "final_state_difference": [
+        0.005783108348811128,
+        0.00012792256745419728,
+        -1.3609447770124294e-15,
+        0.03470467781325537,
+        0.01932882070151612,
+        0.0007208222065009338,
+        -3.95516952522712e-16,
+        0.11605297154749854
+      ]
+    },
+    {
+      "module": "ilqr",
+      "seed": 1,
+      "comparison": "Independent open-loop replay: two RK4 .01 s steps per saved .02 s action",
+      "max_state_difference": 0.09229379948505839,
+      "state_rmse": 0.006957181003740499,
+      "final_state_difference": [
+        0.00460103182581556,
+        8.874933261027174e-05,
+        2.6252871404564004e-15,
+        0.02760767003208997,
+        0.015375405075261063,
+        0.00046520357767292075,
+        9.228728892196614e-16,
+        0.09229379948505839
+      ]
+    },
+    {
+      "module": "ilqr",
+      "seed": 2,
+      "comparison": "Independent open-loop replay: two RK4 .01 s steps per saved .02 s action",
+      "max_state_difference": 0.11408448994134145,
+      "state_rmse": 0.0085977621672419,
+      "final_state_difference": [
+        0.005685189899964305,
+        0.00012436655422187748,
+        -3.776872477961879e-15,
+        0.034116722633251495,
+        0.019001382771145457,
+        0.0006975114294216489,
+        -1.3600232051658168e-15,
+        0.11408448994134145
+      ]
+    }
+  ],
+  "dependencies": {
+    "numpy": "2.5.4",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "pillow": "13.0.0",
+    "osqp": "1.1.3"
+  },
+  "note": "Supplemental verification recorded after the saved optimization runs; original run files unchanged."
+}

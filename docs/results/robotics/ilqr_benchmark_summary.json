@@ -1,0 +1,92 @@
+{
+  "task": "ilqr-benchmark",
+  "results": [
+    {
+      "name": "seed0",
+      "settings": {
+        "seed": 0,
+        "initial_state": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "goal_state": [
+          -0.5,
+          1.5,
+          0,
+          3.141592653589793,
+          0,
+          0,
+          0,
+          0
+        ],
+        "dt_s": 0.02,
+        "horizon_states": 200,
+        "max_iterations": 120,
+        "tolerance": 1e-05,
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "initial_input_noise_std_N": 0.5
+      },
+      "metrics": {
+        "status": "iteration limit",
+        "converged": false,
+        "initial_cost": 643.0957328126358,
+        "final_cost": 107.13766845977055,
+        "final_state_error": [
+          0.2101815311940321,
+          -0.46951969961020734,
+          -0.09734529777450507,
+          -0.9561884023508225,
+          -0.09738629583926374,
+          0.2978595611319963,
+          0.0003518859221951498,
+          0.5180124829448822
+        ],
+        "final_position_error_m": 0.5144171695979123,
+        "final_pendulum_error_rad": -0.9561884023508225,
+        "peak_abs_input_N": 103.16338240408196,
+        "minimum_input_N": -81.94717821167872,
+        "wall_seconds": 0.5575842999969609,
+        "accepted_cost_history": [
+          643.0957328126358,
+          271.0666625572557,
+          159.18023642059634,
+          107.13766845977055
+        ],
+        "attempts": [
+          {
+            "iteration": 0,
+            "status": "accepted",
+            "alpha": 0.5,
+            "rho": 1e-05,
+            "cost": 271.0666625572557
+          },
+          {
+            "iteration": 1,
+            "status": "accepted",
+            "alpha": 0.25,
+            "rho": 3.3333333333333337e-06,
+            "cost": 159.18023642059634
+          },
+          {
+            "iteration": 2,
+            "status": "accepted",
+            "alpha": 0.25,
+            "rho": 1.1111111111111112e-06,
+            "cost": 107.13766845977055
+          }
+        ]
+      }
+    }
+  ],
+  "elapsed_seconds": 0.6067456000018865
+}

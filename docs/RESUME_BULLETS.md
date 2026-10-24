@@ -1,8 +1,8 @@
-# Recommended project title
+# Verified resume wording
 
-Nonlinear Control and Flatness-Based Motion Planning
+**Robotic Motion Planning and Optimal Control** — Python, SciPy, OSQP; Penn MEAM 5170 coursework and reproducibility extensions.
 
-- Audited and reproduced cart-pole energy-shaping/LQR and unicycle flatness coursework, correcting model linearization and angle conventions and adding six mathematical and behavioral tests with reproducible simulation configurations.
-- Evaluated 60 cart-pole and 15 unicycle simulations, including paired cost-weight, actuator-limit, five-seed disturbance and model-mismatch studies; measured a 3.64–10.11 s settling-time tradeoff across R=0.1–10 for one fixed cart-pole initial state and documented clipping and open-loop tracking failures.
+- Implemented input-constrained quadrotor MPC and benchmarked it against clipped LQR on matched nonlinear simulations; characterized horizon, cost-weight and model-mismatch failures, with 38% lower above-hover control effort at higher tracking RMSE in a representative recovery case.
+- Reproduced minimum-snap waypoint planning with verified continuity and numerical residuals; confirmed a 128× reduction in integrated squared snap when doubling trajectory duration, and documented physical-feasibility and convergence limitations in nonlinear trajectory optimization.
 
-These describe coursework reproduction and experimental extensions, developed with coding-assistant support. Do not attach MPC, finite-horizon optimization, original algorithms, hardware deployment or real-time guarantees to this project. Original student versus framework authorship requires a pristine starter or other evidence.
+These describe the current portfolio extension, not a claim that the originally submitted coursework already contained completed MPC/iLQR/OSC implementations. Do not add successful Acrobot swing-up, biped walking, constrained iLQR, hardware deployment, SLAM, novel algorithms or real-time guarantees. If interview space is limited, omit the 38% figure rather than dropping its error/effort tradeoff context.

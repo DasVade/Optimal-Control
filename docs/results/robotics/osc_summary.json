@@ -1,0 +1,15 @@
+{
+  "task": "osc",
+  "results": [
+    {
+      "module": "OSC",
+      "source_materials_present": true,
+      "missing": [],
+      "demonstrated_walking": false,
+      "portable_qp_only": true,
+      "status": "blocked",
+      "reason": "pydrake is not installed in the active Windows environment. Existing WSL Ubuntu Python 3.10.12 also reports ModuleNotFoundError: pydrake and has no pip. Temporary WSL environment creation was declined; no further environment modifications attempted."
+    }
+  ],
+  "elapsed_seconds": 0.04308510001283139
+}

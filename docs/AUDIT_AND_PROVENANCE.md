@@ -1,5 +1,7 @@
 # Audit and contribution boundaries
 
+**Scope update, October 23, 2026:** The sections below preserve the earlier audit of the original HW3-only repository. New HW1-HW6 attachments now supply the previously missing handouts and additional methods. Global absence statements below apply to that original repository only, not the expanded project. The authoritative updated inventory is [ASSIGNMENT_INVENTORY.md](ASSIGNMENT_INVENTORY.md), and new implementation/results boundaries are in [ROBOTICS_REPORT.md](ROBOTICS_REPORT.md). Completed minimum-snap and GridWorld sources are present, finite-horizon TVLQR code has missing dependencies, and new MPC/iLQR/collocation completions are explicitly labeled new work.
+
 ## Inspected source
 
 Private repository: `DasVade/Optimal-Control`. Original commit: `3efbb4c` ("Initial commit: add HW3 materials"). Work continues in the same cloned repository on `codex/portfolio-update`. Original Python files, notebooks, and two PNGs remain unchanged; their SHA-256 values are recorded in [source_manifest.json](source_manifest.json). Tracked Python bytecode caches are removed from the new index, retained in history, and ignored locally.

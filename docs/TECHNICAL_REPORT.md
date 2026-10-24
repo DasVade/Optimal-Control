@@ -1,5 +1,7 @@
 # Nonlinear Control and Flatness-Based Motion Planning
 
+**Preserved HW3 report:** Absence/scope statements below describe the original HW3-only project at ae7498a. The newly supplied coursework and new experiments are documented in [the expanded robotics report](ROBOTICS_REPORT.md) and [HW1-HW6 inventory](ASSIGNMENT_INVENTORY.md). Existing experiment conditions and numerical measurements below have not been changed.
+
 Local reproducibility and experimental extension of the supplied HW3 repository, October 23, 2026. Scope and source limitations are documented in [the audit](AUDIT_AND_PROVENANCE.md). The focused tasks are cart-pole stabilization/swing-up and a smaller unicycle feedforward planning example. MPC and horizon studies are deliberately excluded because no such implementation exists in the source.
 
 ## Models and objectives
