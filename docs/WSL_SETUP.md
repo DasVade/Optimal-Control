@@ -1,6 +1,6 @@
 # Persistent WSL environment and Drake follow-up
 
-The earlier environment blocker is resolved. Ubuntu-22.04 WSL already existed. Existing Conda environments `hw2` (Python 3.11), `cv`, `apriltag`, and `videomem` were checked; none contained Drake or OSQP. The `hw2` interpreter was reused to create an isolated Python 3.11 virtual environment. Existing Conda packages were not changed.
+The Drake workflow uses a persistent Python 3.11 environment in Ubuntu-22.04 WSL.
 
 - Persistent environment: `/home/yxlewis/.venvs/optimal-control`
 - Interpreter: `/home/yxlewis/.venvs/optimal-control/bin/python`
@@ -38,13 +38,13 @@ The setup script reuses the persistent environment if present. On a fresh machin
 
 The 0.2 s benchmark completes with 400 QP evaluations and zero failures. Finite-difference stance-foot checks give max Jacobian error 1.585e-11 and bias error 2.249e-6 at the documented initial configuration and fixed-seed velocity. Actual actuator-order limits are [500,500,400,400] Nm. The first attempt's NumPy conversion failure is retained locally as `osc_wsl_benchmark_20261023`; the corrected benchmark is `osc_wsl_benchmark_v2_20261023`.
 
-This resolves dependency access and demonstrates actual multibody execution. A short run, matrix residual, or nonzero forward displacement alone does not establish stable walking. Inspect the longer-run metrics, posture, solver failures and contact behavior before making that claim. The original Windows-only blocked status and historical report remain dated evidence; the current environment is described here.
+The adapter provides executable multibody simulation; posture, contact behavior and solver status are evaluated below.
 
 ## Five-second follow-up
 
-The run completes 5.0 s in 59.07 s wall time, advancing 2.5802 m. Minimum/final base heights are .7805/.7988 m; final pitch is .4628 rad. One of 10000 QP evaluations reaches the iteration limit at t=.9995 s, invoking the logged previous-torque fallback. Maximum explicit constraint violation across all evaluations is 2.71e-5; a small residual does not override a failed solver status. No stable-walking or real-time claim follows from this finite trace, especially given the torso tilt and unverified long-duration/contact robustness.
+The run completes 5.0 s in 59.07 s wall time, advancing 2.5802 m. Minimum/final base heights are .7805/.7988 m; final pitch is .4628 rad. One of 10000 QP evaluations reaches the iteration limit at t=.9995 s, invoking the logged previous-torque fallback. Maximum explicit constraint violation across all evaluations is 2.71e-5; a small residual does not override a failed solver status. Torso tilt and a QP fallback remain the main observed issues in this finite run.
 
-[State plots](figures/robotics/osc_wsl_states.png) and [actual-model kinematics animation](figures/robotics/osc_wsl.gif) are generated from saved simulation states, not an invented motion. Curated environment/check/metric JSONs are in `docs/results/robotics/osc_wsl_*`; full states and every QP status remain in ignored `outputs/osc_wsl_5s_20261023`. Regenerate presentation assets with:
+[State plots](figures/robotics/osc_wsl_states.png) and [actual-model kinematics animation](figures/robotics/osc_wsl.gif) are generated from saved simulation states. Curated environment/check/metric JSONs are in `docs/results/robotics/osc_wsl_*`; full states and every QP status remain in ignored `outputs/osc_wsl_5s_20261023`. Regenerate presentation assets with:
 
 ```powershell
 wsl -d Ubuntu-22.04 --exec /home/yxlewis/.venvs/optimal-control/bin/python scripts/build_wsl_osc.py
@@ -54,7 +54,7 @@ The optional Drake model test also independently compares the portable Acrobot d
 
 ## Expanded Drake verification
 
-The persistent environment has been reused, with no new WSL distribution or replacement environment. The tests now independently check both feet, center-of-mass position and the scalar torso joint over three fixed-seed configurations and velocities. They verify the model's `qdot=v` mapping, velocity-coordinate Jacobians and bias accelerations with finite differences, in addition to the Acrobot model comparison. These pass in Drake 1.51.1. This extends the initial single stance-foot check without changing controller gains or planner equations.
+The checks use the same persistent WSL environment. The tests now independently check both feet, center-of-mass position and the scalar torso joint over three fixed-seed configurations and velocities. They verify the model's `qdot=v` mapping, velocity-coordinate Jacobians and bias accelerations with finite differences, in addition to the Acrobot model comparison. These pass in Drake 1.51.1. This extends the initial single stance-foot check without changing controller gains or planner equations.
 
 The preserved completed HW4 code has also now been executed directly with Drake. For the same notebook waypoints and four 1 s segments, its solver reports `kSolutionFound`; integrated squared snap is 210.6953646030 versus 210.6953642384 for the scaled solver. Maximum sampled position difference is 1.42e-8 m; original waypoint residual is 1.42e-8 m. The original implementation is therefore verified for this configuration, rather than only classified as completed from inspection. One-sided continuity checks at +/-1e-9 s give 3.37e-8 maximum difference across derivative orders 1-4 (their respective units). This is a sampled numerical check, not a blanket conditioning guarantee.
 
@@ -84,7 +84,7 @@ The unchanged controller/planner settings were run for 10 s in the same persiste
 
 The numerical bound overshoot is explicitly retained rather than rounded to zero; QP solutions are accepted within a 1e-4 residual tolerance, and this adapter does not apply a post-solve clipping guard. Peak torques reach the 500/400 Nm URDF limits. Limit events are brief: per-actuator fractions within 1e-4 Nm of a limit are .00160, .00170, .00100 and .00095, respectively. This is not sustained saturation. The residual combines constraint rows with their own units; it is a numerical diagnostic, not a physical accuracy measure.
 
-Accepted QP contact forces satisfy the candidate linear friction cone to the reported numerical tolerance. They are **predicted optimization variables**, not independently measured plant contact forces. Stance-point velocity includes contact transitions; its nonzero value is not a certified physical slip estimate. Torso lean, unverified contact-force agreement and the absence of disturbance/mismatch evaluations prevent a robust-walking claim. Offline computation is slower than simulated time and provides no real-time guarantee.
+Accepted QP contact forces satisfy the candidate linear friction cone to the reported numerical tolerance. They are **predicted optimization variables**, not independently measured plant contact forces. Stance-point velocity includes contact transitions; its nonzero value is not a certified physical slip estimate. Torso lean and unverified contact-force agreement remain limitations; disturbance and mismatch studies have not been performed. Offline computation is slower than simulated time.
 
 [Ten-second state plots](figures/robotics/osc_wsl_10s_states.png) · [Model-kinematics animation](figures/robotics/osc_wsl_10s.gif) · [Numerical diagnostics](results/robotics/osc_wsl_10s_diagnostics.json)
 
@@ -93,4 +93,4 @@ wsl -d Ubuntu-22.04 --exec /home/yxlewis/.venvs/optimal-control/bin/python scrip
 .\.venv\Scripts\python.exe scripts/summarize_wsl_osc.py 'outputs/my_wsl_osc_10s' --output 'outputs/my_wsl_osc_10s_diagnostics.json'
 ```
 
-The summary script uses NumPy only and can instead run with the WSL interpreter. Figure regeneration for the recorded run uses `scripts/build_wsl_osc.py --input outputs/osc_wsl_10s_verified_20261023 --prefix osc_wsl_10s` under WSL. This follow-up verifies executable multibody simulation and several mathematical properties; it does not reclassify the earlier unsuccessful Acrobot optimizations or establish robust locomotion.
+The summary script uses NumPy only and can instead run with the WSL interpreter. Figure regeneration for the recorded run uses `scripts/build_wsl_osc.py --input outputs/osc_wsl_10s_verified_20261023 --prefix osc_wsl_10s` under WSL. The ten-second run provides multibody and contact-switching diagnostics under the stated settings.
