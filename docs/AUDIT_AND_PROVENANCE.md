@@ -4,7 +4,7 @@
 
 ## Inspected source
 
-Private repository: `DasVade/Optimal-Control`. Original commit: `3efbb4c` ("Initial commit: add HW3 materials"). Work continues in the same cloned repository on `codex/portfolio-update`. Original Python files, notebooks, and two PNGs remain unchanged; their SHA-256 values are recorded in [source_manifest.json](source_manifest.json). Tracked Python bytecode caches are removed from the new index, retained in history, and ignored locally.
+Repository: `DasVade/Optimal-Control`. Original commit: `3efbb4c` ("Initial commit: add HW3 materials"). The implementation branch `codex/portfolio-update` was merged into `main`; source history is preserved. Original Python files, notebooks, and two PNGs remain unchanged; their SHA-256 values are recorded in [source_manifest.json](source_manifest.json). Tracked Python bytecode caches are removed from the new index, retained in history, and ignored locally.
 
 The GitHub app returned 404, but the user's existing Git Credential Manager authentication successfully cloned the repository and the authenticated CLI confirmed private visibility. No new remote is created or changed.
 
@@ -41,4 +41,4 @@ The original LQR A[2,2]=1 models cart-velocity dependence absent from the nonlin
 
 SciPy's continuous algebraic Riccati solver removes the required Drake installation from the new reproducible path. The "legacy linearization" cases are a **SciPy reimplementation of the original continuous LQR equations**, with the legacy A coefficients retained; they are not a verified execution of the original Drake stack. Original notebooks remain runnable only with their dependencies/environment restored. No unsupported controller was introduced to match a resume claim.
 
-Third-party dependencies: NumPy, SciPy, Matplotlib, Pillow, pytest; original code additionally imports Drake/IPython. The spline/control methods are established methods and course implementations, not new algorithms. Course source/public redistribution conditions are not established by the repository's private visibility. No license or public release is asserted; no push or deployment is performed.
+Third-party dependencies: NumPy, SciPy, Matplotlib, Pillow, pytest; original code additionally imports Drake/IPython. The spline/control methods are established methods and course implementations, not new algorithms. The owner confirmed on October 24, 2026 that course rules impose no publication restrictions and authorized public release. Original credits and third-party notices are retained; local data, environments and temporary outputs are excluded. See [current release notes](RELEASE.md).

@@ -16,3 +16,18 @@ credentials*
 secrets*
 *.zip
 materials/
+# Additional release exclusions
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.npy
+checkpoints/
+weights/
+datasets/
+venv/
+node_modules/
+.aws/
+.ssh/
+id_rsa*
+id_ed25519*

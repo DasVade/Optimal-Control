@@ -63,6 +63,6 @@ Portfolio extensions include:
 
 Original coursework and supplied course frameworks/models remain traceable in Git history and [course_sources](course_sources/README.md). The [HW1-HW6 inventory](docs/ASSIGNMENT_INVENTORY.md) distinguishes existing implementations, supplied infrastructure and new extensions, including attribution for the provided footstep planner. These are established methods, not original algorithms.
 
-The repository remains private pending confirmation of course-material redistribution conditions.
+Explore the [live project page](https://yixiaoliu.me/projects/robotic-motion-planning-optimal-control/) for additional demonstrations. Datasets, source archives, environments and full generated runs are excluded; see [release notes](docs/RELEASE.md).
 
 [Detailed experimental report](docs/ROBOTICS_REPORT.md) · [Preserved HW3 report](docs/TECHNICAL_REPORT.md) · [Raw numerical summaries](docs/results/robotics)
