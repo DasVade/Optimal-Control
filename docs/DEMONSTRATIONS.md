@@ -29,7 +29,6 @@ paths and SHA-256 hashes are recorded in `results/robotics/demo_verification.jso
 
 Only selected newly generated visualizations and their factual summaries are
 copied to the website. No course source, datasets, archives or solver code is
-published there. The control repository remains private; existing course-source
-redistribution restrictions remain unresolved. Optional unicycle and iLQR
+published there. The source repository is public following the owner's October 24, 2026 publication authorization. Optional unicycle and iLQR
 results remain secondary; see ROBOTICS_REPORT.md and TECHNICAL_REPORT.md for
 their status rather than interpreting optimization outcomes as deployment.

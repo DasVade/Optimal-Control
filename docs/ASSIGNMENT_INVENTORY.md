@@ -30,7 +30,7 @@ Original files mix instructor framework and completed student regions; the hando
 
 Everything in the new `quadrotor.py`, `minsnap.py`, `ilqr.py`, `acrobot.py`, `osc.py`, experiment adapters, tests and result presentation is a new completion/extension in this portfolio update, based on established course methods. No original algorithm is claimed. The earlier package additions at `ae7498a` remain separately traceable.
 
-Missing: pristine instructor versions, authoritative student submission history, autograder results, original run seeds/environments, missing HW2 trajectories/driver, and explicit course redistribution permission. The full original Drake/Deepnote environment has not been restored. No MATLAB files were found. Supplied course artifacts do not establish SLAM, hardware deployment, real-time guarantees, globally optimal nonlinear planning, or successful walking.
+Missing: pristine instructor versions, authoritative student submission history, autograder results, original run seeds/environments, missing HW2 trajectories/driver. The full original Drake/Deepnote environment has not been restored. No MATLAB files were found. Supplied course artifacts do not establish SLAM, hardware deployment, real-time guarantees, globally optimal nonlinear planning, or successful walking.
 
 Written solutions are not treated as ground truth: HW2 HJB derivation mixes half factors and its claim that the general square-root ODE preserves triangularity is false in general; HW3 text mislabels upright as theta=0 although its model uses pi, and Q positive semidefinite plus R positive definite alone does not make every closed-loop stage cost strictly positive. New numerical conventions follow the actual dynamics and handout objectives, not these prose mistakes.
 
