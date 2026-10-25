@@ -2,7 +2,7 @@
 
 **Preserved HW3 report:** Absence/scope statements below describe the original HW3-only project at ae7498a. The newly supplied coursework and new experiments are documented in [the expanded robotics report](ROBOTICS_REPORT.md) and [HW1-HW6 inventory](ASSIGNMENT_INVENTORY.md). Existing experiment conditions and numerical measurements below have not been changed.
 
-Local reproducibility and experimental extension of the supplied HW3 repository, October 23, 2026. Scope and source limitations are documented in [the audit](AUDIT_AND_PROVENANCE.md). The focused tasks are cart-pole stabilization/swing-up and a smaller unicycle feedforward planning example. MPC and horizon studies are deliberately excluded because no such implementation exists in the source.
+Local reproducibility and experimental extension of the supplied HW3 repository, October 23, 2026. Scope and source limitations are documented in [the audit](AUDIT_AND_PROVENANCE.md). The focused tasks are cart-pole stabilization/swing-up and a smaller unicycle feedforward planning example. This report covers the HW3 tasks; quadrotor MPC and horizon studies appear in the expanded robotics report.
 
 ## Models and objectives
 
@@ -28,7 +28,7 @@ A = [[0, 0,                           1, 0],
 B = [0, 0, 1/mc, 1/(mc*L)]^T
 ```
 
-Finite-difference tests include unequal masses and nonunit length. The supplied velocity coefficient `A[2,2]=1` fails that comparison. Local LQR minimizes the continuous **infinite-horizon**, unconstrained linearized objective integral `(e^T Q e + R u^2) dt`, with `e=[q, wrap(theta-pi), v, omega]`; CARE supplies K and the requested input is `-K e`. Q defaults to diag(1,1,1,10), R=1. Weights scale physical-state penalties; no dimensionless equal-importance interpretation is assumed. No discretized LQR, sampled-data hold, MPC, or finite-horizon optimizer is implemented.
+Finite-difference tests include unequal masses and nonunit length. The supplied velocity coefficient `A[2,2]=1` fails that comparison. Local LQR minimizes the continuous **infinite-horizon**, unconstrained linearized objective integral `(e^T Q e + R u^2) dt`, with `e=[q, wrap(theta-pi), v, omega]`; CARE supplies K and the requested input is `-K e`. Q defaults to diag(1,1,1,10), R=1. Weights scale physical-state penalties; no dimensionless equal-importance interpretation is assumed. This cart-pole study uses continuous-time feedback.
 
 The inherited energy-shaping heuristic uses normalized pole-energy error `Etilde=0.5 omega^2-(g/L)cos(theta)-g/L`, cart acceleration request `a=clip(2 omega cos(theta) Etilde - 1.2 v - 2.5 q, -28,28)`, then partial feedback linearization:
 
@@ -91,15 +91,15 @@ Five paired force-pulse seeds, same small initial offset (mean ± sample SD):
 
 The mass/length mismatch cases remain completed and settled for these five tested pulses. This is a small scenario sweep, not a robustness certificate. Full values, including final errors, are in the raw records.
 
-### Correction is mathematical, not universal performance dominance
+### Linearization correction
 
-For the small initial offset, the SciPy reimplementation of legacy A settles in 9.46 s versus 5.65 s for corrected A, and has 20 s final cart error 0.01475 m versus 0.0000182 m. However, its whole-trajectory cart RMSE is lower (0.0654 vs 0.1142 m). Correcting the Jacobian is justified by the equations and finite differences, not by claiming every metric improves. The original Drake environment was not executed.
+For the small initial offset, the SciPy reimplementation of legacy A settles in 9.46 s versus 5.65 s for corrected A, and has 20 s final cart error 0.01475 m versus 0.0000182 m. However, its whole-trajectory cart RMSE is lower (0.0654 vs 0.1142 m). The corrected Jacobian matches the equations and finite differences; the metrics show a different transient trade-off. The original Drake environment was not executed.
 
 ### Limits, basin and swing-up failures
 
 At initial `[.25,pi+.25,0,0]`, the 2 N clipped LQR does not settle: final cart error is 7.138 m, force is clipped at about 97.45% of logged samples, and the diagnostic ±2 m bound is exceeded at about 24.14% of samples. At 10 N, it settles in 6.55 s; at 180 N, 6.52 s. Applied-force violations are zero at logged times for all audited cases. Clipping limits force, not state excursions.
 
-For a 1.2 rad initial upright offset, standalone LQR hits the safety stop; the inherited hybrid policy settles in 9.71 s. This is one tested initial state, not a global basin estimate. Starting 30° from downward, hybrid control settles in 9.84 s but temporarily exceeds ±2 m cart travel; it is not a rail-constrained solution. Exactly stationary downward is an invariant zero-input state of this energy-shaping law and **never swings up**. Adding a kick to hide that limitation was deliberately avoided. Equivalent 30°+2pi initialization gives the same audited response after angle wrapping.
+For a 1.2 rad initial upright offset, standalone LQR hits the safety stop; the inherited hybrid policy settles in 9.71 s. This is one tested initial state, not a global basin estimate. Starting 30° from downward, hybrid control settles in 9.84 s but temporarily exceeds ±2 m cart travel; it is not a rail-constrained solution. Exactly stationary downward is an invariant zero-input state of this energy-shaping law and **never swings up**. Equivalent 30°+2pi initialization gives the same audited response after angle wrapping.
 
 ![Retained failure cases](figures/failures.png)
 
@@ -109,16 +109,16 @@ Wrapped-angle plot jumps at ±pi are coordinate representation changes, not disc
 
 Animation spans 20 simulated seconds in 40 frames at 10 fps (accelerated playback). Dotted cart bounds are diagnostics, not barriers.
 
-### Unicycle: good nominal inversion is not robust tracking
+### Unicycle feedforward sensitivity
 
 Across five obstacle seeds, nominal mean position RMSE is 0.00000385 m and mean endpoint error 0.00000891 m under the exact simulated model and tangent-aligned initialization. A +0.05 rad heading offset raises mean RMSE to 0.3521 m and mean endpoint error to 0.49995 m; a +5% speed mismatch gives 0.3521 m and 0.50000 m. The endpoint rotation/scale errors agree with open-loop geometry. All 15 logged trajectories have positive sampled clearance, but only five obstacles and sampled collision checks were tested.
 
 ![Open-loop unicycle sensitivity](figures/unicycle.png)
 
-The spline can demand up to **22.50 m/s** and **36.39 rad/s** in these samples. It also has nonzero terminal speed; it passes through the endpoint rather than stopping there. These are significant limitations for physical robots. No actuator-bounded trajectory optimization or feedback tracker is claimed. The larger unicycle RMSE is a different task/metric from cart-pole regulation and is not compared as controller superiority.
+The spline can demand up to **22.50 m/s** and **36.39 rad/s** in these samples. It also has nonzero terminal speed; it passes through the endpoint rather than stopping there. These are significant limitations for physical robots. The spline is an open-loop geometric reference without actuator constraints. The larger unicycle RMSE is a different task/metric from cart-pole regulation and is not compared as controller superiority.
 
 ## Reproduction and deliverables
 
 See [README](../README.md) for installation and CLI commands. The suite creates a new directory with full configuration, numeric traces, gains, metrics, and environment. `scripts/build_portfolio.py --run <directory>` exports curated figures and small result records to docs; it does not run simulations. The six meaningful tests check finite-difference Jacobians, CARE residual/stability, partial feedback linearization, wrapping/clipping, flatness inversion and RK4 versus tight adaptive integration.
 
-Remaining gaps: full assignment and pristine framework are unavailable; original Drake behavior is not directly verified; only a small set of plants, initial states and seeded force pulses is tested; hard cart-rail constraints, unicycle actuator constraints, feedback tracking, MPC and finite-horizon optimization are absent. No new algorithms, real-world deployment, or certified real-time performance is asserted. The owner authorized public release on October 24, 2026 and confirmed that course rules impose no restrictions. See [current release notes](RELEASE.md).
+This HW3 study covers a small set of plants, initial states and seeded force pulses. Hard cart-rail constraints, unicycle actuator constraints and feedback tracking are outside its model. The expanded coursework and quadrotor MPC studies are documented separately in the robotics report.

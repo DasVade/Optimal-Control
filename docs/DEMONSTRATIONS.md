@@ -27,8 +27,6 @@ paths and SHA-256 hashes are recorded in `results/robotics/demo_verification.jso
   completion. Waypoint interpolation and the existing T^-7 objective result
   apply. These are planned point motions, not dynamically simulated flight.
 
-Only selected newly generated visualizations and their factual summaries are
-copied to the website. No course source, datasets, archives or solver code is
-published there. The source repository is public following the owner's October 24, 2026 publication authorization. Optional unicycle and iLQR
-results remain secondary; see ROBOTICS_REPORT.md and TECHNICAL_REPORT.md for
-their status rather than interpreting optimization outcomes as deployment.
+Selected animations appear on the [project page](https://yixiaoliu.me/projects/robotic-motion-planning-optimal-control/).
+Optional unicycle and iLQR results are described in [ROBOTICS_REPORT.md](ROBOTICS_REPORT.md)
+and [TECHNICAL_REPORT.md](TECHNICAL_REPORT.md).

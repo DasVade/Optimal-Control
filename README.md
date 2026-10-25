@@ -4,9 +4,9 @@ Input-constrained MPC for planar quadrotor hover and minimum-snap waypoint plann
 
 <img src="docs/figures/robotics/quadrotor_lqr_mpc.gif" width="800" alt="Synchronized saved nonlinear hover recovery traces: clipped LQR alongside constrained MPC N=10 at identical simulation times">
 
-*Synchronized clipped LQR and MPC N=10 hover recovery: initial state `[y,z,theta,vy,vz,omega]=[0.5,0.5,0,1,1,0]`, fixed target at the origin, and motor limits of 0–5.5 N. Both panels use the same clock and axis limits over 10 simulated seconds. Rendered from the preserved traces; no new simulation or tuning.*
+*Synchronized clipped LQR and MPC N=10 hover recovery: initial state `[y,z,theta,vy,vz,omega]=[0.5,0.5,0,1,1,0]`, fixed target at the origin, and motor limits of 0–5.5 N. Both panels use the same clock and axis limits over 10 simulated seconds. Rendered from saved nonlinear simulation traces.*
 
-[Project page: additional demonstrations and limitations](https://yixiaoliu.me/projects/robotic-motion-planning-optimal-control/) · [Demo provenance and verification](docs/DEMONSTRATIONS.md)
+[Project page: additional demonstrations and limitations](https://yixiaoliu.me/projects/robotic-motion-planning-optimal-control/) · [Animation settings](docs/DEMONSTRATIONS.md)
 
 ## Methods
 
@@ -52,7 +52,7 @@ Choose a fresh output folder for each run. JSON configs, numerical CSV/NPZ trace
 
 Secondary modules cover cart-pole control, unicycle flatness, GridWorld, iLQR, Acrobot collocation and biped OSC. Their [status and limitations](docs/ROBOTICS_REPORT.md#scope-and-status), including unsuccessful optimizations and unverified walking robustness, are documented separately.
 
-## Coursework and contributions
+## Implementation and coursework
 
 Portfolio extensions include:
 
@@ -61,8 +61,8 @@ Portfolio extensions include:
 - **Numerical verification:** hover and linearization checks, QP residuals, polynomial continuity, objective/nullspace analysis, and independent integration.
 - **Reproducible experiments:** fixed configurations and seeds, numerical exports, and controlled horizon, weight, disturbance, model-mismatch and duration studies.
 
-Original coursework and supplied course frameworks/models remain traceable in Git history and [course_sources](course_sources/README.md). The [HW1-HW6 inventory](docs/ASSIGNMENT_INVENTORY.md) distinguishes existing implementations, supplied infrastructure and new extensions, including attribution for the provided footstep planner. These are established methods, not original algorithms.
+Original coursework and supplied course frameworks/models remain traceable in Git history and [course_sources](course_sources/README.md). The [HW1-HW6 inventory](docs/ASSIGNMENT_INVENTORY.md) distinguishes existing implementations, supplied infrastructure and new extensions, including attribution for the provided footstep planner.
 
-Explore the [live project page](https://yixiaoliu.me/projects/robotic-motion-planning-optimal-control/) for additional demonstrations. Datasets, source archives, environments and full generated runs are excluded; see [release notes](docs/RELEASE.md).
+Explore the [live project page](https://yixiaoliu.me/projects/robotic-motion-planning-optimal-control/) for additional demonstrations. Datasets, source archives, environments and full generated runs are excluded.
 
 [Detailed experimental report](docs/ROBOTICS_REPORT.md) · [Preserved HW3 report](docs/TECHNICAL_REPORT.md) · [Raw numerical summaries](docs/results/robotics)

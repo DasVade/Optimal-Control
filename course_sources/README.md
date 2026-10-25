@@ -7,4 +7,4 @@ These small files are copied byte-for-byte from the supplied MEAM 5170 Fall 2025
 - `hw5`, `hw6`: supplied dynamics/framework/models and missing solver bodies; syntax errors are preserved deliberately.
 - Original HW3 remains at the repository root and in Git history.
 
-Large notebooks, PDFs, TeX build intermediates and archives remain in ignored local `materials/`. No new license is applied to course or third-party files. The owner confirmed on October 24, 2026 that course rules impose no restrictions on publication. Original source credits remain intact. The supplied footstep planner and the visualizer credited to Russ Tedrake are not personal algorithm contributions.
+Large notebooks, PDFs, TeX build intermediates and archives remain in ignored local `materials/`. No new license is applied to course or third-party files. Original source credits remain intact. The supplied footstep planner retains its original method reference; the visualizer retains Russ Tedrake's credit and BSD notice.
