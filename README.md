@@ -1,5 +1,7 @@
 # Robotic Motion Planning and Optimal Control
 
+**Project date:** Fall 2025
+
 Input-constrained MPC for planar quadrotor hover and minimum-snap waypoint planning. An extension of **Penn MEAM 5170 coursework**, with solver implementations, model and simulation corrections, numerical checks, and reproducible experiments using Python, NumPy, SciPy and OSQP.
 
 <img src="docs/figures/robotics/quadrotor_lqr_mpc.gif" width="800" alt="Synchronized saved nonlinear hover recovery traces: clipped LQR alongside constrained MPC N=10 at identical simulation times">
@@ -32,7 +34,7 @@ Continuous infinite-horizon LQR and finite-horizon MPC use different objective a
 
 <img src="docs/figures/robotics/minimum_snap.png" width="850" alt="Minimum-snap waypoint paths and speed/snap profiles under duration scaling">
 
-Doubling minimum-snap trajectory duration from 4 to 8 s reduces integrated squared snap from 210.6954 to 1.6461 (128×). Endpoint derivatives are free; dynamic flight feasibility is not imposed. [Formulation and numerical checks](docs/ROBOTICS_REPORT.md#free-endpoint-nullspace-and-independent-objective-audit).
+Doubling minimum-snap trajectory duration from 4 to 8 s reduces integrated squared snap from 210.6954 to 1.6461 (128×). This is geometric waypoint planning with free endpoint derivatives. [Formulation and numerical checks](docs/ROBOTICS_REPORT.md#free-endpoint-nullspace-and-independent-objective-audit).
 
 ## Install and run
 
